@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赵晓钰 — 高级 UI 设计师 / 网页 · App · 数据可视化</title>
+<meta name="description" content="赵晓钰，高级 UI 设计师。九年经验，覆盖网页端、App 端与数据可视化设计，现任阳光保险集团 UI 设计。">
+<meta name="theme-color" content="#F7F7F5">
+<meta property="og:title" content="赵晓钰 — 高级 UI 设计师">
+<meta property="og:description" content="网页端 · App 端 · 数据可视化 / 九年界面设计经验">
+<meta property="og:image" content="assets/hero-poster.jpg">
+<meta property="og:type" content="website">
+<link rel="preload" as="image" href="assets/hero-poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E0E10'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23E86A12'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--
+  ============================================================
+  内容替换清单（初版：赵晓钰 → 已按赵晓钰简历更新）
+  姓名   : 赵晓钰      出现于 .nav__brand、.hero__title、页脚
+  定位   : 高级 UI 设计师 / 网页端 · App 端 · 数据可视化
+  城市   : 北京          ← 简历：期望城市 北京
+  邮箱   : 295454878@qq.com   ← 简历原文
+  电话   : 18515586020        ← 简历原文
+  期望   : UI设计师 · 期望薪资 20-25K · 期望城市 北京
+  人像   : assets/portrait.jpg    ← 由简历截图裁切，如有原图请直接覆盖
+  ============================================================
+-->
+<a class="skip" href="#main">跳到主要内容</a>
+
+<!-- ==================== 导航 ==================== -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="#top" aria-label="回到顶部">
+      赵晓钰<span class="nav__brand-sep">·</span><span class="nav__brand-sub">UI</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="主导航">
+      <a href="#experience">经历</a>
+      <a href="#work">项目</a>
+      <a href="#strengths">优势</a>
+      <a href="#contact">联系</a>
+      <a class="nav__links-mail" href="mailto:295454878@qq.com">295454878@qq.com</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a class="btn" href="#contact">联系我</a>
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==================== 模块 1 · Hero 沉浸式影像层 ==================== -->
+  <section class="hero" id="top">
+    <div class="hero__media" aria-hidden="true">
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
+             poster="assets/hero-poster.jpg" tabindex="-1">
+        <source src="assets/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero__veil"></div>
+    </div>
+
+    <div class="hero__content container">
+      <div class="hero__text">
+        <p class="hero__kicker">PORTFOLIO 2026 &nbsp;/&nbsp; 高级 UI 设计师</p>
+        <h1 class="hero__title">
+          <span class="hero__line"><span>UI Designer</span></span>
+          <span class="hero__line"><span>赵晓钰</span></span>
+        </h1>
+        <p class="hero__sub">网页端 · App 端 · 数据可视化</p>
+      </div>
+
+      <figure class="hero__mascot" aria-hidden="true">
+        <span class="hero__halo"></span>
+        <img class="hero__mascot-img" src="assets/mascot.png" alt="" width="982" height="1345" decoding="async">
+        <span class="hero__chip hero__chip--1">9 年经验</span>
+        <span class="hero__chip hero__chip--2">Web · App · 大屏</span>
+        <span class="hero__chip hero__chip--3"><i></i>期望城市 · 北京</span>
+        <b class="hero__spark hero__spark--1">✦</b>
+        <b class="hero__spark hero__spark--2">✦</b>
+        <b class="hero__spark hero__spark--3">✦</b>
+      </figure>
+    </div>
+
+    <div class="hero__meta container">
+      <span class="hero__meta-item">期望城市 · 北京</span>
+      <span class="hero__meta-item">期望薪资 20-25K</span>
+      <a class="hero__meta-item" href="mailto:295454878@qq.com">295454878@qq.com</a>
+    </div>
+  </section>
+
+  <!-- ==================== 模块 2 · 个人经历 编辑部排版 ==================== -->
+  <section class="exp" id="experience">
+    <div class="container">
+
+      <div class="exp__grid">
+        <figure class="exp__figure">
+          <div class="exp__portrait">
+            <img src="assets/portrait.jpg" alt="赵晓钰的人物肖像，浅色背景前的正面照" width="800" height="873" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="exp__caption">图 01 — 个人照，2025</figcaption>
+          <dl class="exp__edu">
+            <div><dt>教育</dt><dd>西安工程大学</dd></div>
+            <div><dt>学历</dt><dd>本科 · 视觉传达设计</dd></div>
+          </dl>
+        </figure>
+
+        <div class="exp__col">
+          <p class="eyebrow">01 — 个人经历</p>
+          <h2 class="exp__title">九年，<br>从纸面走到像素</h2>
+
+          <div class="exp__prose">
+            <p>视觉传达设计出身。2017 年毕业后的第一份工作是在禾木人科技做选角 App——把散在表格、微信群和纸面上的信息，收进一套信息架构里。那一年学会的不是画界面，是先问清楚谁在用、在什么场景下用。</p>
+            <p>之后三年在首汽租车，从 App 全新改版做到员工端和 Mr.car，也第一次把设计框架、基础组件整理成可复用的标准化模板。改版之后，同一个需求从“重画一遍”变成“套用组件”。</p>
+            <p>2021 年进 AIBEE 智能科技，做给设计师和工程师用的效率工具 P&amp;T 与工单系统 TICKET。用户就是隔壁工位的人，方案好不好用，第二天就能听到反馈——交互逻辑和用户调研是在这段时间补回来的。</p>
+            <p>现在在阳光保险集团。独立统筹多线项目的 UI 设计，覆盖网页端、App 端与数据可视化，从需求分析一路跟到落地。日常除了出方案，更多是在竞品和行业趋势里找依据，把“我觉得好看”换成“数据说明这样更好”。</p>
+          </div>
+
+          <div class="exp__timeline">
+            <table>
+              <caption class="sr-only">工作经历时间线</caption>
+              <thead>
+                <tr><th scope="col">年份</th><th scope="col">公司</th><th scope="col">职责</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2022 — 至今</td>
+                  <td>阳光保险集团<span class="cell-role">高级 UI 设计师</span></td>
+                  <td>独立统筹多线项目 UI 设计，覆盖网页端、App 端与数据可视化</td>
+                </tr>
+                <tr>
+                  <td>2021 — 2022</td>
+                  <td>AIBEE 智能科技<span class="cell-role">高级 UI 设计师</span></td>
+                  <td>0→1 设计 P&amp;T 提效工具与 TICKET 工单系统，主导搭建组件库</td>
+                </tr>
+                <tr>
+                  <td>2018 — 2021</td>
+                  <td>首汽租车<span class="cell-role">高级 UI 设计师</span></td>
+                  <td>主导 App 全新改版与员工端、Mr.car，输出设计框架与组件规范</td>
+                </tr>
+                <tr>
+                  <td>2017 — 2018</td>
+                  <td>禾木人科技<span class="cell-role">UI 设计师</span></td>
+                  <td>主导选角 App 信息架构与视觉界面设计</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <ul class="stats">
+        <li><b>9</b><span>年经验</span></li>
+        <li><b>4</b><span>端覆盖</span></li>
+        <li><b>6</b><span>0→1 项目</span></li>
+        <li><b>2</b><span>套组件库</span></li>
+      </ul>
+
+      <div class="exp__colophon">
+        <p class="eyebrow eyebrow--plain">刊物页脚 / CONTACT</p>
+        <ul>
+          <li><span>邮箱</span><a href="mailto:295454878@qq.com">295454878@qq.com</a></li>
+          <li><span>电话</span>18515586020</li>
+          <li><span>城市</span>期望城市 · 北京</li>
+          <li><span>状态</span>求职意向：UI 设计师 · 期望薪资 20-25K</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 模块 3 · 精选项目 画册式全宽 ==================== -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="work__head">
+        <p class="eyebrow">02 — 精选项目</p>
+        <h2 class="work__title">五个项目，四种尺度</h2>
+        <p class="work__lead">从手掌里的 App，到十米外的大屏。同一套规则在不同尺寸上的答案。</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="按类型筛选项目">
+        <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">全部<span>05</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="app">App<span>01</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="web">Web<span>02</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="screen">大屏<span>01</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="ai">AI 助手<span>01</span></button>
+      </div>
+    </div>
+
+    <div class="projects" id="projects">
+
+      <!-- —— 项目 01 · App —— -->
+      <article class="project" data-cat="app" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--app">
+              <div class="stage__inner">
+                <div class="app-cover">
+                  <span class="app-cover__meta app-cover__meta--tl">SUNSHINE INSURANCE<br>MOBILE APP</span>
+                  <span class="app-cover__meta app-cover__meta--tr">2022 — 至今<br>iOS · ANDROID</span>
+                  <span class="app-cover__bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                  <span class="app-cover__blob" aria-hidden="true"></span>
+                  <h4 class="app-cover__word" aria-hidden="true">SUNSHINE<i>*</i></h4>
+                  <div class="phone-shot app-cover__phone">
+                    <img src="assets/sun-home.jpg" alt="阳光保险 App 保险首页" width="640" height="1386" loading="lazy" decoding="async">
+                  </div>
+                  <span class="app-cover__meta app-cover__meta--bl">01 / APP · 投保主流程</span>
+                  <span class="app-cover__meta app-cover__meta--br">UI/UX · 5 KEY PAGES</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">01 / App</p>
+            <h3 class="project__name">阳光保险 App</h3>
+            <p class="project__desc">先明确流程，再梳理思路。把投保拆成「需求产生—基础认知—驱动决策—加固信任」四段，对应首页、列表、详情、完成四个节点，每一步只回答一个问题。</p>
+            <ul class="project__tags" aria-label="项目标签">
+              <li>金融保险</li>
+              <li>投保主流程</li>
+              <li>0 → 1 五个关键页</li>
+            </ul>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>高级 UI 设计师</dd></div>
+              <div><dt>平台</dt><dd>iOS · Android</dd></div>
+              <div><dt>年份</dt><dd>2022 — 至今</dd></div>
+              <div><dt>篇幅</dt><dd>流程梳理 · 5 个关键页面</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-sunshine.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 02 · Web —— -->
+      <article class="project project--flip" data-cat="web" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--web">
+              <div class="stage__inner">
+                <div class="eco-cover">
+                  <span class="app-cover__meta app-cover__meta--tl">阳光科技 · 生态平台</span>
+                  <span class="app-cover__meta app-cover__meta--tr">02 / Web</span>
+                  <div class="eco-cover__info">
+                    <span class="eco-cover__tag">生态合作 · B 端平台</span>
+                    <h4 class="eco-cover__word">生态<em>平台</em></h4>
+                    <p class="eco-cover__sub">蓝色系 · B 端体验 · 信息密度 · 状态语义</p>
+                    <p class="eco-cover__desc">面向生态合作方的 B 端平台，以蓝色系设计语言重建导航层级与信息密度，让开放能力与数据服务以更清晰的界面被阅读。</p>
+                    <ul class="eco-cover__index" aria-label="收录页面">
+                      <li><b>01</b>平台首页</li>
+                      <li><b>02</b>数据集详情</li>
+                      <li><b>03</b>服务详情</li>
+                      <li><b>04</b>孵化申请</li>
+                      <li><b>05</b>移动端 · 我的</li>
+                    </ul>
+                  </div>
+                  <div class="eco-cover__stage">
+                    <span class="eco-cover__pedestal" aria-hidden="true"></span>
+                    <div class="eco-cover__laptop">
+                      <div class="eco-cover__screen">
+                        <img src="assets/eco-home-top.jpg" alt="生态平台首页首屏" width="1400" height="1000" loading="lazy" decoding="async">
+                      </div>
+                      <div class="eco-cover__deck" aria-hidden="true"></div>
+                    </div>
+                    <div class="eco-cover__panel">
+                      <img src="assets/eco-dataset.jpg" alt="生态平台数据集详情页" width="1400" height="788" loading="lazy" decoding="async">
+                    </div>
+                    <div class="eco-cover__callout eco-cover__callout--1"><i></i>首页 · 信息架构重建</div>
+                    <div class="eco-cover__callout eco-cover__callout--2"><i></i>数据集 · 结构化详情</div>
+                    <div class="eco-cover__chip">
+                      <span class="eco-cover__chip-t">审批状态语义</span>
+                      <span class="eco-status"><i class="st-ok"></i>已通过</span>
+                      <span class="eco-status"><i class="st-doing"></i>审批中</span>
+                      <span class="eco-status"><i class="st-no"></i>已驳回</span>
+                    </div>
+                  </div>
+                  <span class="app-cover__meta app-cover__meta--bl">生态平台 · 2023</span>
+                  <span class="app-cover__meta app-cover__meta--br">UI 设计 · 5 个页面</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">02 / Web</p>
+            <h3 class="project__name">阳光科技生态链接合作平台</h3>
+            <p class="project__desc">面向生态合作方的 B 端平台，全套蓝色系设计语言。围绕导航层级、信息密度与状态表达重建版式秩序：一级导航加面包屑、头部信息三段式、审批状态色语义化，让开放能力与数据服务以更清晰的界面被阅读。</p>
+            <ul class="project__tags" aria-label="项目标签">
+              <li>B 端平台</li>
+              <li>蓝色系设计语言</li>
+              <li>Web / 移动双端</li>
+            </ul>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>界面设计 / 双端走查</dd></div>
+              <div><dt>平台</dt><dd>Web · 1440 基准</dd></div>
+              <div><dt>年份</dt><dd>2023</dd></div>
+              <div><dt>篇幅</dt><dd>5 个核心页面 · Web / 移动双端</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-eco.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 03 · Web —— -->
+      <article class="project" data-cat="web" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--web">
+              <div class="stage__inner">
+                <div class="web-cover web-cover--hr">
+                  <span class="app-cover__meta app-cover__meta--tl">阳光保险 · EHR</span>
+                  <span class="app-cover__meta app-cover__meta--tr">03 / Web</span>
+                  <div class="hr-cover__info">
+                    <h4 class="hr-cover__title">HR 门户<br>双主题设计</h4>
+                    <span class="hr-cover__tag">＜ 门户 · 双主题皮肤 ＞</span>
+                    <p class="hr-cover__desc">集团内部的人事门户与长期服务计划后台。门户做换肤，后台治密度——这是这次改版的两个关键词。</p>
+                    <div class="hr-feats">
+                      <div class="hr-feat"><b>1</b><div class="hr-feat__txt"><strong>双主题皮肤</strong><p>主题令牌参数化，橙 / 蓝一键切换</p></div><span class="mini mini--o" aria-hidden="true"><i></i><i></i><i></i></span></div>
+                      <div class="hr-feat"><b>2</b><div class="hr-feat__txt"><strong>密表格治理</strong><p>两级表头分组，主键列前置加宽</p></div><span class="mini mini--b" aria-hidden="true"><i></i><i></i><i></i></span></div>
+                      <div class="hr-feat"><b>3</b><div class="hr-feat__txt"><strong>控件规格统一</strong><p>按钮、分页器、上传卡全站同源</p></div><span class="mini mini--g" aria-hidden="true"><i></i><i></i><i></i></span></div>
+                    </div>
+                  </div>
+                  <div class="hr-laptop">
+                    <div class="hr-laptop__screen">
+                      <div class="browser">
+                        <div class="browser__bar">
+                          <span class="browser__dots"><i></i><i></i><i></i></span>
+                          <span class="browser__url">阳光保险集团 / EHR 门户 · 首页</span>
+                          <span class="browser__bar-right"></span>
+                        </div>
+                        <div class="browser__body">
+                          <img src="assets/hr-portal-orange.jpg" alt="EHR 门户首页 · 橙色主题" width="1400" height="1231" loading="lazy" decoding="async">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="hr-laptop__base" aria-hidden="true"></div>
+                  </div>
+                  <span class="app-cover__meta app-cover__meta--bl">HR 门户 · 2022</span>
+                  <span class="app-cover__meta app-cover__meta--br">UI 设计 · 6 个页面</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">03 / Web</p>
+            <h3 class="project__name">阳光 HR 门户 · 长期服务计划后台</h3>
+            <p class="project__desc">集团内部的人事门户与后台系统。门户首页做了橙色 / 蓝色双主题皮肤；后台围绕表格与表单治理信息密度：表头分组、状态色语义化、筛选与分页控件全站统一，让最密的表格也保持扫读节奏。</p>
+            <ul class="project__tags" aria-label="项目标签">
+              <li>集团 EHR</li>
+              <li>门户双主题</li>
+              <li>密表格信息治理</li>
+            </ul>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>界面设计 / 组件规范</dd></div>
+              <div><dt>平台</dt><dd>Web · 1440 基准</dd></div>
+              <div><dt>年份</dt><dd>2022</dd></div>
+              <div><dt>篇幅</dt><dd>门户双主题 · 6 个后台页面</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-hr.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 04 · 大屏 —— -->
+      <article class="project" data-cat="screen" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--screen">
+              <div class="stage__inner">
+                <div class="viz-cover">
+                  <span class="app-cover__meta app-cover__meta--tl">阳光科技 · 数据可视化</span>
+                  <span class="app-cover__meta app-cover__meta--tr">04 / 大屏</span>
+                  <div class="viz-cover__head">
+                    <span class="viz-cover__tag">DATA VISUALIZATION</span>
+                    <h4 class="viz-cover__title">Data <em>Visualize</em></h4>
+                    <p class="viz-cover__sub">数据可视化作品集 · 四块主题大屏</p>
+                    <p class="viz-cover__desc">经营驾驶舱、品牌文化、确认函分析、社区智慧平台——深蓝底、语义数据色、三级字阶，为十米外的阅读效率而设计。</p>
+                  </div>
+                  <div class="viz-cover__stage">
+                    <div class="viz-screen viz-screen--back"><img src="assets/dash-confirm.jpg" alt="确认函数据分析大屏" width="1400" height="788" loading="lazy" decoding="async"></div>
+                    <div class="viz-screen viz-screen--main"><img src="assets/dash-biz.jpg" alt="公司经营数据大屏" width="1400" height="788" loading="lazy" decoding="async"></div>
+                  </div>
+                  <span class="app-cover__meta app-cover__meta--bl">科技大屏 · 2021 — 2023</span>
+                  <span class="app-cover__meta app-cover__meta--br">UI 设计 · 4 块 16:9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">04 / 大屏</p>
+            <h3 class="project__name">阳光科技大屏 · 数据可视化</h3>
+            <p class="project__desc">四块 16:9 主题大屏：经营驾驶舱、品牌文化、确认函分析、社区智慧平台。深蓝底、语义数据色、三级字阶，为十米外的阅读效率而设计。</p>
+            <ul class="project__tags" aria-label="项目标签">
+              <li>数据可视化</li>
+              <li>深色主题</li>
+              <li>16:9 · 4 块</li>
+            </ul>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>界面设计 / 动效节奏</dd></div>
+              <div><dt>平台</dt><dd>大屏 · 16:9 / 4K · LED</dd></div>
+              <div><dt>年份</dt><dd>2021 — 2023</dd></div>
+              <div><dt>篇幅</dt><dd>4 块主题大屏</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-dash.html">查看作品集<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 05 · AI 助手 —— -->
+      <article class="project project--flip" data-cat="ai" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--ai">
+              <div class="stage__inner">
+                <div class="ai-cover">
+                  <span class="app-cover__meta app-cover__meta--tl">SUNSHINE TALENT<br>AI ASSISTANT</span>
+                  <span class="app-cover__meta app-cover__meta--tr">2024 — 2025<br>iOS · PAD</span>
+                  <span class="ai-cover__glow" aria-hidden="true"></span>
+                  <h4 class="ai-cover__word" aria-hidden="true">智能<em>检索</em></h4>
+                  <div class="ai-cover__pad">
+                    <div class="browser">
+                      <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">人才智能检索助理 · Pad 端</span></div>
+                      <div class="browser__body"><img src="assets/talent-p2.jpg" alt="人才智能检索助理 Pad 端检索成功页" width="1800" height="1012" loading="lazy" decoding="async"></div>
+                    </div>
+                  </div>
+                  <div class="phone-shot ai-cover__phone">
+                    <img src="assets/talent-m0.jpg" alt="人才智能检索助理手机端初始状态" width="700" height="1516" loading="lazy" decoding="async">
+                  </div>
+                  <span class="ai-cover__chip ai-cover__chip--1">按住说话 · 语音检索</span>
+                  <span class="ai-cover__chip ai-cover__chip--2">人才 PK · 一键对比</span>
+                  <b class="ai-cover__spark ai-cover__spark--1" aria-hidden="true">✦</b>
+                  <b class="ai-cover__spark ai-cover__spark--2" aria-hidden="true">✦</b>
+                  <span class="app-cover__meta app-cover__meta--bl">05 / AI · 人才智能检索</span>
+                  <span class="app-cover__meta app-cover__meta--br">UI 设计 · 11 个界面</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">05 / AI 助手</p>
+            <h3 class="project__name">人才智能检索助理</h3>
+            <p class="project__desc">用一句话找到对的人。面向集团内部的 AI 检索助理：按住说话，AI 解析检索条件、筛选人才、一键 PK 对比。从功能架构、机器人形象到双端界面，独立负责全流程设计。</p>
+            <ul class="project__tags" aria-label="项目标签">
+              <li>AI 对话式检索</li>
+              <li>手机 + Pad 双端</li>
+              <li>语音交互</li>
+            </ul>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>界面设计 / 全流程</dd></div>
+              <div><dt>平台</dt><dd>iOS · Pad 双端</dd></div>
+              <div><dt>年份</dt><dd>2024 — 2025</dd></div>
+              <div><dt>篇幅</dt><dd>11 个核心界面 · 双端</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-talent.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==================== 模块 4 · 个人优势 卡片矩阵 ==================== -->
+  <section class="edge" id="strengths">
+    <div class="container">
+      <div class="edge__head">
+        <div>
+          <p class="eyebrow">03 — 个人优势</p>
+          <h2 class="edge__title">能自己动手的<br>那部分设计</h2>
+        </div>
+        <p class="edge__lead">不是只有效果图。从规则定义到上线走查，这六件事我全程都在。</p>
+      </div>
+
+      <ul class="cards">
+        <li class="card" data-reveal style="--d:0ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></svg>
+          </span>
+          <h3>设计系统搭建</h3>
+          <p>从零建立令牌、栅格与组件分层，规范能长期维护。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:60ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M12 3l8 4.6v8.8L12 21l-8-4.6V7.6L12 3z"/><path d="M4 7.6l8 4.6 8-4.6"/><path d="M12 12.2V21"/></svg>
+          </span>
+          <h3>组件化交付</h3>
+          <p>设计与代码共用命名，交付即组件，少一次还原。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:120ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3 20.5h18"/><rect x="5" y="12.5" width="3.2" height="4.6"/><rect x="10.4" y="8" width="3.2" height="9.1"/><rect x="15.8" y="4.5" width="3.2" height="12.6"/></svg>
+          </span>
+          <h3>数据可视化</h3>
+          <p>把复杂指标拆成层级，十米外也读得懂。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:0ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4.5 20L12 4l7.5 16"/><path d="M7.4 14.6h9.2"/></svg>
+          </span>
+          <h3>品牌视觉延展</h3>
+          <p>从标志到界面，同一种语气贯穿所有触点。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:60ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2.5" y="4.5" width="12.5" height="9.5" rx="1"/><path d="M6 17.5h5.5"/><rect x="16.5" y="8" width="5.5" height="10.5" rx="1"/></svg>
+          </span>
+          <h3>跨端一致性</h3>
+          <p>四端一套规则，尺寸差异不变体验断层。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:120ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="7" cy="6" r="2.3"/><circle cx="7" cy="18" r="2.3"/><circle cx="17" cy="11" r="2.3"/><path d="M7 8.3v7.4"/><path d="M9.3 6h3.4a2.3 2.3 0 012.3 2.3v.4"/></svg>
+          </span>
+          <h3>研发协作落地</h3>
+          <p>标注、走查、灰度复盘，设计意图落进版本。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== 模块 5 · 联系 反色收尾 ==================== -->
+  <section class="contact" id="contact">
+    <div class="container contact__inner" data-reveal>
+      <p class="eyebrow eyebrow--dark">04 — 联系</p>
+      <h2 class="contact__cta">正在寻找下一个机会</h2>
+      <a class="contact__mail" href="mailto:295454878@qq.com">295454878@qq.com</a>
+      <p class="contact__meta">
+        <span>电话 18515586020</span>
+        <span>期望城市 · 北京</span>
+        <span class="contact__status"><i aria-hidden="true"></i>期望薪资 20-25K</span>
+      </p>
+    </div>
+
+    <footer class="foot container">
+      <span>© <span id="year">2026</span> 赵晓钰 · 高级 UI 设计师</span>
+      <span>HTML / CSS / 原生 JS 手写 · 无框架</span>
+    </footer>
+  </section>
+
+</main>
+
+<script src="script.js" defer></script>
+</body>
+</html>

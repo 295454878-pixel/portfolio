@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赵晓钰 — 高级 UI 设计师 / 网页 · App · 数据可视化</title>
+<meta name="description" content="赵晓钰，高级 UI 设计师。九年经验，覆盖网页端、App 端与数据可视化设计，现任阳光保险集团 UI 设计。">
+<meta name="theme-color" content="#F7F7F5">
+<meta property="og:title" content="赵晓钰 — 高级 UI 设计师">
+<meta property="og:description" content="网页端 · App 端 · 数据可视化 / 九年界面设计经验">
+<meta property="og:image" content="assets/hero-poster.jpg">
+<meta property="og:type" content="website">
+<link rel="preload" as="image" href="assets/hero-poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E0E10'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23E86A12'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<style>body{margin-top:-4452px}</style></head>
+<body>
+<!--
+  ============================================================
+  内容替换清单（初版：赵晓钰 → 已按赵晓钰简历更新）
+  姓名   : 赵晓钰      出现于 .nav__brand、.hero__title、页脚
+  定位   : 高级 UI 设计师 / 网页端 · App 端 · 数据可视化
+  城市   : 北京 · 中国  ← 简历未写明，按现任职公司所在地填写，请确认
+  邮箱   : hi@zhaoxiaoyu.design   ← 占位，请替换为真实邮箱
+  微信   : zhaoxiaoyu_ui          ← 占位
+  人像   : assets/portrait.jpg    ← 由简历截图裁切，如有原图请直接覆盖
+  ============================================================
+-->
+<a class="skip" href="#main">跳到主要内容</a>
+
+<!-- ==================== 导航 ==================== -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="#top" aria-label="回到顶部">
+      赵晓钰<span class="nav__brand-sep">·</span><span class="nav__brand-sub">UI</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="主导航">
+      <a href="#experience">经历</a>
+      <a href="#work">项目</a>
+      <a href="#strengths">优势</a>
+      <a href="#contact">联系</a>
+      <a class="nav__links-mail" href="mailto:hi@zhaoxiaoyu.design">hi@zhaoxiaoyu.design</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a class="btn" href="#contact">联系我</a>
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==================== 模块 1 · Hero 沉浸式影像层 ==================== -->
+  <section class="hero" id="top">
+    <div class="hero__media" aria-hidden="true">
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
+             poster="assets/hero-poster.jpg" tabindex="-1">
+        <source src="assets/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero__veil"></div>
+    </div>
+
+    <div class="hero__content container">
+      <p class="hero__kicker">PORTFOLIO 2026 &nbsp;/&nbsp; 高级 UI 设计师</p>
+      <h1 class="hero__title">
+        <span class="hero__line"><span>UI Designer</span></span>
+        <span class="hero__line"><span>赵晓钰</span></span>
+      </h1>
+      <p class="hero__sub">网页端 · App 端 · 数据可视化</p>
+    </div>
+
+    <div class="hero__meta container">
+      <span class="hero__meta-item">北京 · 中国</span>
+      <span class="hero__meta-item">2027 Q1 可接项目</span>
+      <a class="hero__meta-item" href="mailto:hi@zhaoxiaoyu.design">hi@zhaoxiaoyu.design</a>
+    </div>
+  </section>
+
+  <!-- ==================== 模块 2 · 个人经历 编辑部排版 ==================== -->
+  <section class="exp" id="experience">
+    <div class="container">
+
+      <div class="exp__grid">
+        <figure class="exp__figure">
+          <div class="exp__portrait">
+            <img src="assets/portrait.jpg" alt="赵晓钰的人物肖像，浅色背景前的正面照" width="800" height="1067" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="exp__caption">图 01 — 个人照，2025</figcaption>
+          <dl class="exp__edu">
+            <div><dt>教育</dt><dd>西安工程大学</dd></div>
+            <div><dt>学历</dt><dd>本科 · 视觉传达设计</dd></div>
+          </dl>
+        </figure>
+
+        <div class="exp__col">
+          <p class="eyebrow">01 — 个人经历</p>
+          <h2 class="exp__title">九年，<br>从纸面走到像素</h2>
+
+          <div class="exp__prose">
+            <p>视觉传达设计出身。2017 年毕业后的第一份工作是在禾木人科技做选角 App——把散在表格、微信群和纸面上的信息，收进一套信息架构里。那一年学会的不是画界面，是先问清楚谁在用、在什么场景下用。</p>
+            <p>之后三年在首汽租车，从 App 全新改版做到员工端和 Mr.car，也第一次把设计框架、基础组件整理成可复用的标准化模板。改版之后，同一个需求从“重画一遍”变成“套用组件”。</p>
+            <p>2021 年进 AIBEE 智能科技，做给设计师和工程师用的效率工具 P&amp;T 与工单系统 TICKET。用户就是隔壁工位的人，方案好不好用，第二天就能听到反馈——交互逻辑和用户调研是在这段时间补回来的。</p>
+            <p>现在在阳光保险集团。独立统筹多线项目的 UI 设计，覆盖网页端、App 端与数据可视化，从需求分析一路跟到落地。日常除了出方案，更多是在竞品和行业趋势里找依据，把“我觉得好看”换成“数据说明这样更好”。</p>
+          </div>
+
+          <div class="exp__timeline">
+            <table>
+              <caption class="sr-only">工作经历时间线</caption>
+              <thead>
+                <tr><th scope="col">年份</th><th scope="col">公司</th><th scope="col">职责</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2022 — 至今</td>
+                  <td>阳光保险集团<span class="cell-role">高级 UI 设计师</span></td>
+                  <td>独立统筹多线项目 UI 设计，覆盖网页端、App 端与数据可视化</td>
+                </tr>
+                <tr>
+                  <td>2021 — 2022</td>
+                  <td>AIBEE 智能科技<span class="cell-role">高级 UI 设计师</span></td>
+                  <td>0→1 设计 P&amp;T 提效工具与 TICKET 工单系统，主导搭建组件库</td>
+                </tr>
+                <tr>
+                  <td>2018 — 2021</td>
+                  <td>首汽租车<span class="cell-role">高级 UI 设计师</span></td>
+                  <td>主导 App 全新改版与员工端、Mr.car，输出设计框架与组件规范</td>
+                </tr>
+                <tr>
+                  <td>2017 — 2018</td>
+                  <td>禾木人科技<span class="cell-role">UI 设计师</span></td>
+                  <td>主导选角 App 信息架构与视觉界面设计</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <ul class="stats">
+        <li><b>9</b><span>年经验</span></li>
+        <li><b>4</b><span>端覆盖</span></li>
+        <li><b>6</b><span>0→1 项目</span></li>
+        <li><b>2</b><span>套组件库</span></li>
+      </ul>
+
+      <div class="exp__colophon">
+        <p class="eyebrow eyebrow--plain">刊物页脚 / CONTACT</p>
+        <ul>
+          <li><span>邮箱</span><a href="mailto:hi@zhaoxiaoyu.design">hi@zhaoxiaoyu.design</a></li>
+          <li><span>微信</span>zhaoxiaoyu_ui</li>
+          <li><span>城市</span>北京 · 中国（GMT+8）</li>
+          <li><span>状态</span>2027 Q1 可接 1 个项目</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 模块 3 · 精选项目 画册式全宽 ==================== -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="work__head">
+        <p class="eyebrow">02 — 精选项目</p>
+        <h2 class="work__title">四个项目，四种尺度</h2>
+        <p class="work__lead">从手掌里的 App，到十米外的大屏。同一套规则在不同尺寸上的答案。</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="按类型筛选项目">
+        <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">全部<span>04</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="app">App<span>01</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="web">Web<span>01</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="screen">大屏<span>01</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="print">平面<span>01</span></button>
+      </div>
+    </div>
+
+    <div class="projects" id="projects">
+
+      <!-- —— 项目 01 · App —— -->
+      <article class="project" data-cat="app" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--app">
+              <div class="stage__inner">
+                <div class="phones">
+                  <div class="phone-shot">
+                    <img src="assets/sun-home.jpg" alt="阳光保险 App 保险首页" width="640" height="1386" loading="lazy" decoding="async">
+                  </div>
+
+                  <div class="phone-shot">
+                    <img src="assets/sun-list.jpg" alt="阳光保险 App 买保险产品列表页" width="640" height="1386" loading="lazy" decoding="async">
+                  </div>
+
+                  <div class="phone-shot">
+                    <img src="assets/sun-profile.jpg" alt="阳光保险 App 个人中心" width="640" height="1386" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">01 / App</p>
+            <h3 class="project__name">阳光保险 App</h3>
+            <p class="project__desc">先明确流程，再梳理思路。把投保拆成「需求产生—基础认知—驱动决策—加固信任」四段，对应首页、列表、详情、完成四个节点，每一步只回答一个问题。</p>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>高级 UI 设计师</dd></div>
+              <div><dt>平台</dt><dd>iOS · Android</dd></div>
+              <div><dt>年份</dt><dd>2022 — 至今</dd></div>
+              <div><dt>篇幅</dt><dd>流程梳理 · 5 个关键页面</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-sunshine.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 02 · Web —— -->
+      <article class="project project--flip" data-cat="web" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--web">
+              <div class="stage__inner">
+                <div class="browser">
+                  <div class="browser__bar">
+                    <span class="browser__dots"><i></i><i></i><i></i></span>
+                    <span class="browser__url">sunshine-ecology.com / 保险数据开放合作 · 详情说明</span>
+                    <span class="browser__bar-right"></span>
+                  </div>
+                  <div class="browser__body">
+                    <img src="assets/eco-home-top.jpg" alt="阳光科技生态链接合作平台首页首屏" width="1400" height="1000" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <div class="browser browser--over" aria-hidden="true">
+                  <div class="browser__bar">
+                    <span class="browser__dots"><i></i><i></i><i></i></span>
+                    <span class="browser__url">保险条款问答数据集</span>
+                    <span class="browser__bar-right"></span>
+                  </div>
+                  <div class="browser__body">
+                    <img src="assets/eco-dataset.jpg" alt="" width="1400" height="1735" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">02 / Web</p>
+            <h3 class="project__name">阳光科技生态链接合作平台</h3>
+            <p class="project__desc">面向生态合作方的 B 端平台，全套蓝色系设计语言。围绕导航层级、信息密度与状态表达重建版式秩序：一级导航加面包屑、头部信息三段式、审批状态色语义化，让开放能力与数据服务以更清晰的界面被阅读。</p>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>界面设计 / 双端走查</dd></div>
+              <div><dt>平台</dt><dd>Web · 1440 基准</dd></div>
+              <div><dt>年份</dt><dd>2023</dd></div>
+              <div><dt>篇幅</dt><dd>5 个核心页面 · Web / 移动双端</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-eco.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 03 · 大屏 —— -->
+      <article class="project" data-cat="screen" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--screen">
+              <div class="stage__inner">
+                <div class="dash">
+                  <div class="dash__hint">横向滚动查看 3 块屏 <span aria-hidden="true">→</span></div>
+                  <div class="dash__scroll" tabindex="0" aria-label="大屏设计稿，可横向滚动">
+
+                    <div class="dash__screen">
+                      <div class="dash__top">
+                        <span class="dash__title">临港新片区 · 城市运行体征</span>
+                        <span class="dash__time">2026.11.20 &nbsp;14:32</span>
+                      </div>
+                      <div class="dash__row">
+                        <div class="dash__kpi"><span>在网设备</span><b>28,641</b><i>+312</i></div>
+                        <div class="dash__kpi"><span>今日客流</span><b>412<small>万</small></b><i>+4.8%</i></div>
+                        <div class="dash__kpi"><span>平均通行</span><b>6.2<small>min</small></b><i>−0.4</i></div>
+                        <div class="dash__kpi"><span>告警</span><b class="is-blue">07</b><i>3 已闭环</i></div>
+                      </div>
+                      <div class="dash__grid">
+                        <div class="dash__panel">
+                          <p class="dash__panel-t">区域人流热力</p>
+                          <div class="heat">
+                            <span style="--x:12%;--y:22%;--s:34px;--o:.5"></span>
+                            <span style="--x:34%;--y:48%;--s:52px;--o:.8"></span>
+                            <span style="--x:52%;--y:30%;--s:28px;--o:.4"></span>
+                            <span style="--x:68%;--y:62%;--s:44px;--o:.65"></span>
+                            <span style="--x:86%;--y:38%;--s:22px;--o:.35"></span>
+                            <span style="--x:24%;--y:74%;--s:26px;--o:.3"></span>
+                          </div>
+                        </div>
+                        <div class="dash__panel">
+                          <p class="dash__panel-t">24 小时流量曲线</p>
+                          <svg class="dash__line" viewBox="0 0 240 90" preserveAspectRatio="none" aria-hidden="true">
+                            <path d="M0 78 L24 74 L48 66 L72 50 L96 34 L120 22 L144 26 L168 40 L192 54 L216 66 L240 72" fill="none" stroke="#E86A12" stroke-width="1.5"/>
+                            <path d="M0 78 L24 74 L48 66 L72 50 L96 34 L120 22 L144 26 L168 40 L192 54 L216 66 L240 72 L240 90 L0 90 Z" fill="rgba(232,106,18,.10)" stroke="none"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dash__screen">
+                      <div class="dash__top">
+                        <span class="dash__title">交通 · 路网实时态势</span>
+                        <span class="dash__time">CAM 04 / 12</span>
+                      </div>
+                      <div class="dash__row">
+                        <div class="dash__kpi"><span>路网指数</span><b>1.34</b><i>缓行</i></div>
+                        <div class="dash__kpi"><span>在途车辆</span><b>9,204</b><i>−128</i></div>
+                        <div class="dash__kpi"><span>信号优化</span><b>46<small>路口</small></b><i>已生效</i></div>
+                        <div class="dash__kpi"><span>事件</span><b class="is-blue">02</b><i>处置中</i></div>
+                      </div>
+                      <div class="dash__cols" aria-hidden="true">
+                        <i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:34%"></i><i style="--h:76%"></i><i style="--h:64%"></i><i style="--h:88%"></i><i style="--h:52%"></i><i style="--h:70%"></i><i style="--h:46%"></i><i style="--h:92%"></i><i style="--h:60%"></i><i style="--h:50%"></i><i style="--h:74%"></i><i style="--h:38%"></i><i style="--h:66%"></i><i style="--h:56%"></i><i style="--h:80%"></i><i style="--h:44%"></i>
+                      </div>
+                    </div>
+
+                    <div class="dash__screen">
+                      <div class="dash__top">
+                        <span class="dash__title">能源 · 分区负荷</span>
+                        <span class="dash__time">BLOCK A—F</span>
+                      </div>
+                      <div class="dash__row">
+                        <div class="dash__kpi"><span>总负荷</span><b>1,842<small>MW</small></b><i>+2.1%</i></div>
+                        <div class="dash__kpi"><span>清洁占比</span><b>38.6<small>%</small></b><i>+1.4</i></div>
+                        <div class="dash__kpi"><span>峰值时段</span><b>14<small>时</small></b><i>今日</i></div>
+                        <div class="dash__kpi"><span>储能余量</span><b class="is-blue">62<small>%</small></b><i>正常</i></div>
+                      </div>
+                      <div class="dash__grid">
+                        <div class="dash__panel">
+                          <p class="dash__panel-t">分区负荷对比</p>
+                          <div class="dash__bars">
+                            <div><span>A</span><i style="--h:64%"></i></div>
+                            <div><span>B</span><i style="--h:82%"></i></div>
+                            <div><span>C</span><i style="--h:48%"></i></div>
+                            <div><span>D</span><i style="--h:70%"></i></div>
+                            <div><span>E</span><i style="--h:36%"></i></div>
+                            <div><span>F</span><i style="--h:56%"></i></div>
+                          </div>
+                        </div>
+                        <div class="dash__panel">
+                          <p class="dash__panel-t">清洁能源占比</p>
+                          <div class="dash__ring">
+                            <svg viewBox="0 0 100 100" aria-hidden="true">
+                              <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="7"/>
+                              <circle cx="50" cy="50" r="38" fill="none" stroke="#E86A12" stroke-width="7" stroke-dasharray="92 239" transform="rotate(-90 50 50)"/>
+                            </svg>
+                            <b>38.6%</b>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">03 / 大屏</p>
+            <h3 class="project__name">临港 · 城市运行体征</h3>
+            <p class="project__desc">21:9 的指挥中心主屏，观看距离 4 到 12 米。字号按米重算过一轮：标题 64px 起，数字用等宽字。三块屏共用同一套栅格，值班员换屏不需要重新找位置。</p>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>视觉设计 / 数据梳理</dd></div>
+              <div><dt>平台</dt><dd>21:9 LED · 5760×2460</dd></div>
+              <div><dt>年份</dt><dd>2023</dd></div>
+              <div><dt>篇幅</dt><dd>3 块屏 · 18 个图表</dd></div>
+            </dl>
+            <a class="arrow-link" href="#contact">聊聊类似的项目<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- —— 项目 04 · 平面 —— -->
+      <article class="project project--flip" data-cat="print" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--print">
+              <div class="stage__inner">
+                <div class="masonry">
+                  <div class="poster poster--ink">
+                    <span class="poster__v">字形实验第二回</span>
+                    <b>字</b>
+                    <span class="poster__meta">TYPE STUDY / 2025</span>
+                  </div>
+                  <div class="poster poster--photo">
+                    <img src="assets/hero-poster.jpg" alt="海报作品：低饱和度丝绸光影摄影" loading="lazy" decoding="async">
+                    <span class="poster__overlay">光 的 密 度</span>
+                  </div>
+                  <div class="poster poster--grid">
+                    <span class="poster__num">02</span>
+                    <div class="poster__spec">
+                      <div><span>栅格</span><b>12 栏</b></div>
+                      <div><span>基准</span><b>8 pt</b></div>
+                      <div><span>栏距</span><b>24 px</b></div>
+                    </div>
+                    <span class="poster__cap">GRID SYSTEM / 2025</span>
+                    <div class="poster__lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                  </div>
+                  <div class="poster poster--type">
+                    <span class="poster__aa">Aa</span>
+                    <span class="poster__gg">Gg 09</span>
+                    <span class="poster__cap">思源黑体 / 字重 400—800</span>
+                  </div>
+                  <div class="poster poster--blue">
+                    <span class="poster__ratio">21:9</span>
+                    <span class="poster__cap">为巨屏做的版式，缩到 A4 也不散</span>
+                  </div>
+                  <div class="poster poster--line">
+                    <span class="poster__thin">把一条线<br>用到极处</span>
+                    <span class="poster__rule" aria-hidden="true"></span>
+                    <span class="poster__meta">POSTER / 700×1000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">04 / 平面</p>
+            <h3 class="project__name">字形实验 · 海报与排印</h3>
+            <p class="project__desc">给自家工作室做的年度练习：只用黑、白、灰和一个蓝，测试同一套排印规则在纸张、屏幕、巨型 LED 上是否还成立。多数结论反过来改了界面里的字号阶梯。</p>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>平面 / 字体排印</dd></div>
+              <div><dt>形式</dt><dd>海报 · 折页 · 字体样张</dd></div>
+              <div><dt>年份</dt><dd>2022 — 2025</dd></div>
+              <div><dt>篇幅</dt><dd>24 张 · 6 组系列</dd></div>
+            </dl>
+            <a class="arrow-link" href="#contact">聊聊类似的项目<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==================== 模块 4 · 个人优势 卡片矩阵 ==================== -->
+  <section class="edge" id="strengths">
+    <div class="container">
+      <div class="edge__head">
+        <div>
+          <p class="eyebrow">03 — 个人优势</p>
+          <h2 class="edge__title">能自己动手的<br>那部分设计</h2>
+        </div>
+        <p class="edge__lead">不是只有效果图。从规则定义到上线走查，这六件事我全程都在。</p>
+      </div>
+
+      <ul class="cards">
+        <li class="card" data-reveal style="--d:0ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></svg>
+          </span>
+          <h3>设计系统搭建</h3>
+          <p>从零建立令牌、栅格与组件分层，规范能长期维护。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:60ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M12 3l8 4.6v8.8L12 21l-8-4.6V7.6L12 3z"/><path d="M4 7.6l8 4.6 8-4.6"/><path d="M12 12.2V21"/></svg>
+          </span>
+          <h3>组件化交付</h3>
+          <p>设计与代码共用命名，交付即组件，少一次还原。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:120ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3 20.5h18"/><rect x="5" y="12.5" width="3.2" height="4.6"/><rect x="10.4" y="8" width="3.2" height="9.1"/><rect x="15.8" y="4.5" width="3.2" height="12.6"/></svg>
+          </span>
+          <h3>数据可视化</h3>
+          <p>把复杂指标拆成层级，十米外也读得懂。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:0ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4.5 20L12 4l7.5 16"/><path d="M7.4 14.6h9.2"/></svg>
+          </span>
+          <h3>品牌视觉延展</h3>
+          <p>从标志到界面，同一种语气贯穿所有触点。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:60ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2.5" y="4.5" width="12.5" height="9.5" rx="1"/><path d="M6 17.5h5.5"/><rect x="16.5" y="8" width="5.5" height="10.5" rx="1"/></svg>
+          </span>
+          <h3>跨端一致性</h3>
+          <p>四端一套规则，尺寸差异不变体验断层。</p>
+        </li>
+
+        <li class="card" data-reveal style="--d:120ms">
+          <span class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="7" cy="6" r="2.3"/><circle cx="7" cy="18" r="2.3"/><circle cx="17" cy="11" r="2.3"/><path d="M7 8.3v7.4"/><path d="M9.3 6h3.4a2.3 2.3 0 012.3 2.3v.4"/></svg>
+          </span>
+          <h3>研发协作落地</h3>
+          <p>标注、走查、灰度复盘，设计意图落进版本。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== 模块 5 · 联系 反色收尾 ==================== -->
+  <section class="contact" id="contact">
+    <div class="container contact__inner" data-reveal>
+      <p class="eyebrow eyebrow--dark">04 — 联系</p>
+      <h2 class="contact__cta">有项目想聊聊吗</h2>
+      <a class="contact__mail" href="mailto:hi@zhaoxiaoyu.design">hi@zhaoxiaoyu.design</a>
+      <p class="contact__meta">
+        <span>微信 zhaoxiaoyu_ui</span>
+        <span>北京 · 中国</span>
+        <span class="contact__status"><i aria-hidden="true"></i>2027 Q1 尚可接 1 个项目</span>
+      </p>
+    </div>
+
+    <footer class="foot container">
+      <span>© <span id="year">2026</span> 赵晓钰 · 高级 UI 设计师</span>
+      <span>HTML / CSS / 原生 JS 手写 · 无框架</span>
+    </footer>
+  </section>
+
+</main>
+
+<script src="script.js" defer></script>
+</body>
+</html>

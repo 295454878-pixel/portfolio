@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阳光科技生态链接合作平台 · 设计总结 — 赵晓钰</title>
+<meta name="description" content="阳光科技生态链接合作平台 Web 端界面设计总结 — UI 设计师赵晓钰">
+<style>
+/* ============ tokens ============ */
+:root{
+  --bg:#0E1013;
+  --panel:#15181D;
+  --panel-2:#191D24;
+  --line:#262C36;
+  --line-soft:#1E232C;
+  --ink:#F2F4F7;
+  --mute:#9AA3B2;
+  --dim:#6B7484;
+  --blue:#1F4BFF;          /* 实心填充 · 配白字 */
+  --blue-bright:#5B8CFF;   /* 深底上的文字与图形 */
+  --blue-soft:#2E5BFF;
+  --blue-grad:linear-gradient(92deg,#1F4BFF 10%,#6E9AFF 90%);
+  --light:#F7F7F5;
+  --light-ink:#16181D;
+  --light-mute:#5C6470;
+  --blue-ink:#1B3FD8;      /* 浅底上的小字蓝 */
+  --radius:12px;
+  --w:1200px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+  font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* ============ reveal ============ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============ top bar ============ */
+.top{position:sticky;top:0;z-index:50;background:rgba(14,16,19,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.top__in{max-width:var(--w);margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.top__back{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--mute);transition:color .3s}
+.top__back:hover{color:var(--ink)}
+.top__back svg{width:14px;height:14px}
+.top__meta{font-size:12px;letter-spacing:.14em;color:var(--dim);font-weight:500}
+
+/* ============ section head ============ */
+.sec{padding:clamp(72px,10vw,128px) 0 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--blue-bright);text-transform:uppercase}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--blue-bright)}
+.sec-title{font-size:clamp(26px,3.4vw,40px);font-weight:800;letter-spacing:.01em;line-height:1.25;margin-top:14px}
+.sec-title em{font-style:normal;color:var(--blue-bright)}
+.sec-sub{color:var(--mute);font-size:15px;margin-top:10px;max-width:560px}
+
+/* ============ 01 catalog ============ */
+.cat{padding-top:clamp(64px,9vw,110px)}
+.cat__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+.cat-card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:10px 10px 16px;display:block;position:relative;transition:transform .5s var(--ease),border-color .3s,background .3s}
+.cat-card:hover{transform:translateY(-6px);border-color:#33415C;background:var(--panel-2)}
+.cat-card__num{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim)}
+.cat-card:hover .cat-card__num{color:var(--blue-bright)}
+.cat-card__thumb{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line-soft);aspect-ratio:16/11;background:#0B0D10;margin-bottom:14px}
+.cat-card__thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s var(--ease)}
+.cat-card:hover .cat-card__thumb img{transform:scale(1.045)}
+.cat-card strong{display:block;font-size:14.5px;font-weight:700;letter-spacing:.01em}
+.cat-card small{display:block;font-size:12px;color:var(--dim);margin-top:3px}
+
+/* ============ 02 cover ============ */
+.cover{padding-top:clamp(88px,12vw,150px);position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;top:-220px;right:-160px;width:640px;height:640px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(31,75,255,.22),transparent 70%);pointer-events:none}
+.cover::after{content:"";position:absolute;bottom:-260px;left:-200px;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(46,91,255,.12),transparent 70%);pointer-events:none}
+.cover .wrap{position:relative;z-index:1}
+.cover__brand{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.26em;color:var(--mute)}
+.cover__brand i{width:10px;height:10px;border-radius:3px;background:var(--blue-grad);display:inline-block}
+.cover__title{font-size:clamp(42px,6.4vw,84px);font-weight:800;line-height:1.16;letter-spacing:.005em;margin-top:22px}
+.cover__title em{font-style:normal;background:var(--blue-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cover__desc{color:var(--mute);font-size:clamp(15px,1.4vw,17px);max-width:520px;margin-top:24px}
+.cover__meta{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:28px}
+.cover__meta li{font-size:12.5px;font-weight:600;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:7px 16px;letter-spacing:.04em;background:rgba(21,24,29,.6)}
+.cover__meta li b{color:var(--blue-bright);font-weight:700}
+.cover__stage{margin-top:clamp(44px,6vw,72px)}
+
+/* browser frame */
+.browser{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.65)}
+.browser__bar{height:38px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid var(--line-soft);background:var(--panel-2)}
+.browser__bar i{width:9px;height:9px;border-radius:50%;background:#2C333F;display:inline-block}
+.browser__bar i:nth-child(1){background:#3A4250}
+.browser__url{flex:1;max-width:420px;margin-left:10px;height:20px;border-radius:999px;background:#0E1116;border:1px solid var(--line-soft);display:flex;align-items:center;padding:0 12px;font-size:10.5px;color:var(--dim);letter-spacing:.04em;white-space:nowrap;overflow:hidden}
+.browser__body img{width:100%;height:auto}
+
+/* ============ 03 gallery ============ */
+.gal{position:relative}
+.gal__layout{display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,44px);align-items:start}
+.gal__side{writing-mode:vertical-rl;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:.5em;color:var(--ink);padding-top:6px;border-left:2px solid var(--blue);padding-left:14px;height:fit-content;position:sticky;top:86px}
+.gal__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:26px}
+.fig{position:relative}
+.fig .browser{height:100%}
+.fig__cap{margin-top:16px;display:flex;align-items:baseline;gap:10px}
+.fig__cap .no{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--blue-bright)}
+.fig__cap strong{font-size:15.5px;font-weight:700}
+.fig__cap span{font-size:12.5px;color:var(--dim)}
+.f-home{grid-column:1/span 4}
+.f-dataset{grid-column:5/span 8}
+.f-service{grid-column:1/span 7}
+.f-incub{grid-column:8/span 5;transform:translateY(clamp(18px,3vw,40px))}
+.gal__grid{align-items:start}
+
+/* phone bezel */
+.phone{position:relative;background:#05060A;border:1px solid #2A3040;border-radius:30px;padding:8px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7);max-width:290px;margin:0 auto}
+.phone::after{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:37%;height:11px;background:#05060A;border-radius:999px}
+.phone img{width:100%;height:auto;border-radius:23px}
+
+/* ============ 04 background ============ */
+.bgs__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center;margin-top:44px}
+.bgs__lead{color:var(--mute);font-size:15.5px;max-width:480px}
+.bgs__lead b{color:var(--ink);font-weight:700}
+.bgs__list{list-style:none;margin-top:26px;display:grid;gap:12px}
+.bgs__list li{display:flex;gap:14px;align-items:baseline;font-size:14.5px;color:var(--mute)}
+.bgs__list li::before{content:"";flex:0 0 18px;height:1.5px;background:var(--blue-bright);transform:translateY(-4px)}
+.bgs__list li b{color:var(--ink);font-weight:700}
+.bgs__stage{position:relative}
+.bgs__stage::before{content:"";position:absolute;inset:-40px -30px;background:radial-gradient(closest-side,rgba(31,75,255,.14),transparent 72%);z-index:0;border-radius:50%}
+.bgs__stage .phone{position:relative;z-index:1}
+
+/* ============ 05 goals radial ============ */
+.goals{padding-bottom:clamp(72px,10vw,120px)}
+.goals__head{text-align:center}
+.goals__head .eyebrow{justify-content:center}
+.goals__head .eyebrow::before{display:none}
+.goals__head .eyebrow::after{content:"";width:22px;height:1px;background:var(--blue-bright)}
+.goals__stage{position:relative;max-width:960px;margin:56px auto 0;height:440px}
+.goals__net{position:absolute;inset:0;width:100%;height:100%}
+.pill{position:absolute;width:230px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;transition:border-color .3s,transform .5s var(--ease)}
+.pill:hover{border-color:#3A56B8;transform:translateY(-3px)}
+.pill strong{display:block;font-size:14px;font-weight:700;letter-spacing:.02em}
+.pill small{display:block;font-size:11.5px;color:var(--dim);margin-top:2px;letter-spacing:.03em}
+.pill i{display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--blue-bright);margin-right:8px;transform:translateY(-1px)}
+.pl1{left:0;top:4%}.pl2{left:0;top:44%}.pl3{left:0;top:84%;transform:translateY(-50%)}
+.pr1{right:0;top:4%}.pr2{right:0;top:44%}.pr3{right:0;top:84%;transform:translateY(-50%)}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:196px;height:196px;border-radius:50%;
+  background:var(--blue-grad);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  box-shadow:0 30px 80px -20px rgba(31,75,255,.55);color:#fff}
+.core strong{font-size:23px;font-weight:800;letter-spacing:.14em}
+.core small{font-size:10px;letter-spacing:.3em;opacity:.8}
+
+/* ============ 06 audit (light) ============ */
+.audit{background:var(--light);color:var(--light-ink);padding:clamp(72px,10vw,120px) 0}
+.audit .eyebrow{color:var(--blue-ink)}
+.audit .eyebrow::before{background:var(--blue-ink)}
+.audit__head{text-align:center}
+.audit__head .sec-title{color:var(--light-ink)}
+.audit__head .sec-title em{color:var(--blue-ink)}
+.audit__head .sec-sub{margin-left:auto;margin-right:auto;color:var(--light-mute)}
+.audit__table{max-width:980px;margin:52px auto 0;border:1px solid #E3E3DE;border-radius:14px;overflow:hidden;background:#fff}
+.audit__row{display:grid;grid-template-columns:170px 1fr 1.2fr;border-top:1px solid #ECECE7}
+.audit__row:first-child{border-top:none;background:#F2F4FF}
+.audit__row>*{padding:20px 26px;font-size:14px;line-height:1.75}
+.audit__row>strong{font-size:14px;font-weight:800;color:var(--light-ink);display:flex;align-items:flex-start;gap:10px}
+.audit__row>strong::before{content:"";flex:0 0 6px;height:6px;border-radius:2px;background:var(--blue);transform:translateY(9px)}
+.audit__row:first-child>strong{justify-content:flex-start}
+.audit__row:first-child>*{font-size:12px;letter-spacing:.16em;color:var(--blue-ink);font-weight:700;padding:14px 26px}
+.audit__row:first-child>strong::before{display:none}
+.audit__m{color:var(--light-mute)}
+.audit__d{color:var(--light-ink)}
+.audit__row:not(:first-child)>strong{border-right:1px solid #ECECE7}
+.audit__row:not(:first-child)>.audit__m{border-right:1px solid #ECECE7;color:var(--light-ink);font-weight:600}
+
+/* ============ footer ============ */
+.foot{border-top:1px solid var(--line-soft);padding:44px 0 56px}
+.foot__in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot__prev,.foot__next{display:inline-flex;flex-direction:column;gap:4px;max-width:44%}
+.foot__next{margin-left:auto;text-align:right;align-items:flex-end}
+.foot__prev small,.foot__next small{font-size:11px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.foot__prev strong,.foot__next strong{font-size:15px;font-weight:700;color:var(--ink);transition:color .3s}
+.foot__prev:hover strong,.foot__next:hover strong{color:var(--blue-bright)}
+.foot__home{font-size:12.5px;color:var(--mute);letter-spacing:.04em;transition:color .3s}
+.foot__home:hover{color:var(--ink)}
+
+/* ============ responsive ============ */
+@media (max-width:960px){
+  .cat__grid{grid-template-columns:repeat(3,1fr)}
+  .gal__layout{grid-template-columns:1fr}
+  .gal__side{writing-mode:horizontal-tb;border-left:none;border-bottom:2px solid var(--blue);padding:0 0 10px;letter-spacing:.3em;position:static}
+  .f-home{grid-column:1/span 12}
+  .f-dataset{grid-column:1/span 12}
+  .f-service{grid-column:1/span 12}
+  .f-incub{grid-column:1/span 12;transform:none}
+  .bgs__grid{grid-template-columns:1fr}
+  .goals__stage{height:auto;display:grid;gap:12px;justify-items:center}
+  .goals__net{display:none}
+  .pill{position:static;width:min(100%,420px)}
+  .core{position:static;transform:none;margin-bottom:8px}
+  .audit__row{grid-template-columns:120px 1fr 1.2fr}
+  .audit__row>*{padding:16px 18px}
+}
+@media (max-width:620px){
+  .cat__grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .cat-card__thumb{aspect-ratio:16/12}
+  .audit__row{grid-template-columns:1fr;gap:0}
+  .audit__row:not(:first-child)>strong{border-right:none;border-bottom:1px dashed #ECECE7}
+  .audit__row:not(:first-child)>.audit__m{border-right:none;padding-bottom:0}
+  .audit__row:not(:first-child)>*{padding-bottom:4px}
+  .audit__row:not(:first-child)>*:last-child{padding-bottom:18px}
+  .foot__in{justify-content:center;text-align:center}
+  .foot__next{margin:0 auto;align-items:center}
+}
+</style>
+<style>body{margin-top:-3200px}</style></head>
+<body>
+
+<header class="top">
+  <div class="top__in">
+    <a class="top__back" href="index.html">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      返回作品集
+    </a>
+    <span class="top__meta">PROJECT 02 · WEB PLATFORM</span>
+  </div>
+</header>
+
+<!-- 01 · 页面目录 -->
+<section class="cat">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">01 · Page Index</span>
+      <h2 class="sec-title">页面<em>目录</em></h2>
+      <p class="sec-sub">五个核心页面，覆盖首屏、详情与移动端，从整体到局部看这套蓝色系 B 端界面。</p>
+    </div>
+    <div class="cat__grid">
+      <a class="cat-card reveal" href="#f1">
+        <span class="cat-card__num">01</span>
+        <span class="cat-card__thumb"><img src="assets/eco-home-top.jpg" alt="平台首页缩略" loading="lazy"></span>
+        <strong>平台首页</strong><small>首屏聚合 · 能力陈列</small>
+      </a>
+      <a class="cat-card reveal" href="#f2">
+        <span class="cat-card__num">02</span>
+        <span class="cat-card__thumb"><img src="assets/eco-dataset.jpg" alt="数据集详情缩略" loading="lazy"></span>
+        <strong>数据集详情</strong><small>长页分层 · 示例呈现</small>
+      </a>
+      <a class="cat-card reveal" href="#f3">
+        <span class="cat-card__num">03</span>
+        <span class="cat-card__thumb"><img src="assets/eco-service.jpg" alt="服务详情缩略" loading="lazy"></span>
+        <strong>服务详情</strong><small>标签页 · 协议阅读</small>
+      </a>
+      <a class="cat-card reveal" href="#f4">
+        <span class="cat-card__num">04</span>
+        <span class="cat-card__thumb"><img src="assets/eco-incubation.jpg" alt="孵化申请详情缩略" loading="lazy"></span>
+        <strong>孵化申请详情</strong><small>信息卡 · 案例列表</small>
+      </a>
+      <a class="cat-card reveal" href="#background">
+        <span class="cat-card__num">05</span>
+        <span class="cat-card__thumb"><img src="assets/eco-mobile.jpg" alt="移动端我的页缩略" loading="lazy"></span>
+        <strong>移动端「我的」</strong><small>资源卡 · 流程表</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · 封面 -->
+<section class="cover">
+  <div class="wrap">
+    <p class="cover__brand reveal"><i></i>SUNSHINE ECOLOGY · LINK · COOPERATION</p>
+    <h1 class="cover__title reveal">阳光科技生态<br><em>链接合作平台</em></h1>
+    <p class="cover__desc reveal">面向生态合作方的 Web 端平台界面。围绕导航层级、信息密度与状态表达重建版式秩序，让开放能力、数据服务与孵化流程以更清晰的界面被阅读。</p>
+    <ul class="cover__meta reveal">
+      <li><b>Web 端</b> · B 端平台</li>
+      <li><b>5</b> 个核心页面</li>
+      <li>蓝色系设计语言</li>
+      <li>Web / 移动双端</li>
+    </ul>
+    <div class="cover__stage reveal">
+      <div class="browser">
+        <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">sunshine-ecology.com / 保险数据开放合作 · 详情说明</span></div>
+        <div class="browser__body"><img src="assets/eco-home-top.jpg" alt="阳光科技生态链接合作平台首页首屏"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · 页面展示 -->
+<section class="sec gal" id="screens">
+  <div class="wrap">
+    <div class="gal__layout">
+      <div class="gal__side reveal">页面展示</div>
+      <div class="gal__grid">
+
+        <figure class="fig f-home reveal" id="f1">
+          <div class="browser">
+            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">首页 · 完整长页</span></div>
+            <div class="browser__body"><img src="assets/eco-home.jpg" alt="平台首页完整长页" loading="lazy"></div>
+          </div>
+          <figcaption class="fig__cap"><span class="no">01</span><strong>平台首页</strong><span>首屏聚合 · 长页分段</span></figcaption>
+        </figure>
+
+        <figure class="fig f-dataset reveal" id="f2">
+          <div class="browser">
+            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">保险数据开放合作 / 详情说明</span></div>
+            <div class="browser__body"><img src="assets/eco-dataset.jpg" alt="保险条款问答数据集详情页" loading="lazy"></div>
+          </div>
+          <figcaption class="fig__cap"><span class="no">02</span><strong>数据集详情</strong><span>头图聚焦 · 用例对话 · 流程图标化</span></figcaption>
+        </figure>
+
+        <figure class="fig f-service reveal" id="f3">
+          <div class="browser">
+            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">服务详情 / 快速了解</span></div>
+            <div class="browser__body"><img src="assets/eco-service.jpg" alt="服务详情快速了解页" loading="lazy"></div>
+          </div>
+          <figcaption class="fig__cap"><span class="no">03</span><strong>服务详情</strong><span>标签页导航 · 协议内容居中阅读</span></figcaption>
+        </figure>
+
+        <figure class="fig f-incub reveal" id="f4">
+          <div class="browser">
+            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">孵化申请详情 / 已孵化</span></div>
+            <div class="browser__body"><img src="assets/eco-incubation.jpg" alt="孵化申请详情已孵化页" loading="lazy"></div>
+          </div>
+          <figcaption class="fig__cap"><span class="no">04</span><strong>孵化申请详情</strong><span>主副栏分区 · 案例卡片</span></figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · 项目背景 -->
+<section class="sec bgs" id="background">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">02 · Background</span>
+      <h2 class="sec-title">项目背景<br><em>以及当前界面现状</em></h2>
+    </div>
+    <div class="bgs__grid">
+      <div class="reveal">
+        <p class="bgs__lead">平台聚合<b>开放能力、科技图谱、孵化广场、数据开放合作</b>等多条业务入口，页面类型多、信息密度高，是典型的多角色 B 端产品。改版从界面本身出发：让层级先立住，再谈细节。</p>
+        <ul class="bgs__list">
+          <li><b>导航并列过多</b>&nbsp;双层导航叠加，入口缺乏主次</li>
+          <li><b>头部不聚焦</b>&nbsp;详情页标题、标签、操作区散落</li>
+          <li><b>长页无节奏</b>&nbsp;内容连续铺排，分段与留白缺失</li>
+          <li><b>双端不统一</b>&nbsp;Web 与移动端组件样式各自为政</li>
+        </ul>
+      </div>
+      <div class="bgs__stage reveal">
+        <div class="phone"><img src="assets/eco-mobile.jpg" alt="移动端我的页面" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · 拆解设计目标 -->
+<section class="sec goals" id="goals">
+  <div class="wrap">
+    <div class="goals__head reveal">
+      <span class="eyebrow">03 · Goals</span>
+      <h2 class="sec-title">拆解<em>设计目标</em></h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto">把「界面更清晰」拆成六个可落地的发力点</p>
+    </div>
+    <div class="goals__stage reveal">
+      <svg class="goals__net" viewBox="0 0 960 440" fill="none" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M240 62 C 340 62 360 150 415 185" stroke="#3A56B8" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <path d="M240 210 L 375 210" stroke="#3A56B8" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <path d="M240 358 C 340 358 360 275 415 245" stroke="#3A56B8" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <path d="M720 62 C 620 62 600 150 545 185" stroke="#3A56B8" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <path d="M720 210 L 585 210" stroke="#3A56B8" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <path d="M720 358 C 620 358 600 275 545 245" stroke="#3A56B8" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <path d="M411 182 l 10 6 -11 3z" fill="#3A56B8"/>
+        <path d="M371 210 l 10 -4 0 8z" fill="#3A56B8"/>
+        <path d="M411 248 l 10 -6 -11 -3z" fill="#3A56B8"/>
+        <path d="M549 182 l -10 6 11 3z" fill="#3A56B8"/>
+        <path d="M589 210 l -10 -4 0 8z" fill="#3A56B8"/>
+        <path d="M549 248 l -10 -6 11 -3z" fill="#3A56B8"/>
+      </svg>
+      <div class="pill pl1"><strong><i></i>导航层级收敛</strong><small>ONE-LEVEL NAV</small></div>
+      <div class="pill pl2"><strong><i></i>卡片栅格统一</strong><small>UNIFIED GRID</small></div>
+      <div class="pill pl3"><strong><i></i>长页分段锚点</strong><small>SECTIONED FLOW</small></div>
+      <div class="core"><strong>设计策略</strong><small>STRATEGY</small></div>
+      <div class="pill pr1"><strong><i></i>状态色语义化</strong><small>SEMANTIC STATUS</small></div>
+      <div class="pill pr2"><strong><i></i>组件双端同源</strong><small>SHARED COMPONENTS</small></div>
+      <div class="pill pr3"><strong><i></i>表单动线重排</strong><small>FORM FLOW</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · 问题梳理（浅色） -->
+<section class="audit">
+  <div class="wrap">
+    <div class="audit__head reveal">
+      <span class="eyebrow">04 · Audit</span>
+      <h2 class="sec-title">梳理界面问题，<em>锚定设计发力点</em></h2>
+      <p class="sec-sub">按模块盘一遍现状，把每个问题对应到一个明确的界面动作</p>
+    </div>
+    <div class="audit__table reveal">
+      <div class="audit__row"><strong>模块</strong><span class="audit__m">界面现状</span><span class="audit__d">设计发力点</span></div>
+      <div class="audit__row"><strong>顶部导航</strong><span class="audit__m">双层导航叠加，并列入口多，当前态不突出</span><span class="audit__d">收敛为一级导航 + 面包屑，并列项控制在 7 个以内，当前项用蓝色下划线标记</span></div>
+      <div class="audit__row"><strong>详情页头部</strong><span class="audit__m">标题、标签、简介、操作区分散在三个高度</span><span class="audit__d">头部三段式：主标题 / 元信息标签 / 主操作按钮，蓝底白字只留给主操作</span></div>
+      <div class="audit__row"><strong>内容区版式</strong><span class="audit__m">长文本与卡片混排，间距不一，重心漂移</span><span class="audit__d">统一栅格与 8px 间距基准，按「说明—示例—流程」分段留白</span></div>
+      <div class="audit__row"><strong>状态表达</strong><span class="audit__m">审批进度仅靠文字区分，扫读成本高</span><span class="audit__d">状态色语义化：已通过 / 申请中 / 待审核，配合表头蓝底强化表格层级</span></div>
+      <div class="audit__row"><strong>移动端</strong><span class="audit__m">与 Web 端组件样式脱节，信息组织不一致</span><span class="audit__d">资源统计卡、流程表、折叠面板与 Web 端同源，数字放大形成视觉锚点</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="foot__prev" href="project-sunshine.html">
+      <small>Prev Project</small>
+      <strong>← 阳光保险 App</strong>
+    </a>
+    <a class="foot__home" href="index.html">返回作品集首页</a>
+    <span class="foot__next">
+      <small>UI Designer</small>
+      <strong>赵晓钰 · 作品集</strong>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target)}
+    })
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){e.classList.add('is-in')});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>人才智能检索助理 · AI 助手双端设计 — 赵晓钰</title>
+<meta name="description" content="人才智能检索助理：AI 对话式人才检索，手机 + Pad 双端 11 个核心界面 — UI 设计师赵晓钰">
+<style>
+:root{
+  --bg:#0C0818;
+  --bg-2:#191038;
+  --panel:#171029;
+  --line:rgba(192,132,252,.18);
+  --ink:#F5F1FF;
+  --mute:#B4A8D6;
+  --dim:#6E6392;
+  --vio:#C084FC;
+  --indigo:#818CF8;
+  --pink:#E879F9;
+  --w:1200px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+  font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;background:rgba(12,8,24,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(192,132,252,.14)}
+.top__in{max-width:var(--w);margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.top__back{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--mute);transition:color .3s}
+.top__back:hover{color:var(--ink)}
+.top__back svg{width:14px;height:14px}
+.top__meta{font-size:12px;letter-spacing:.14em;color:var(--dim);font-weight:500}
+
+/* ============ hero ============ */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(80px,11vw,150px) 0 clamp(56px,8vw,110px);
+  background:
+    radial-gradient(700px 380px at 82% 66%,rgba(168,85,247,.30),transparent 70%),
+    radial-gradient(480px 280px at 6% 12%,rgba(129,140,248,.16),transparent 72%),
+    linear-gradient(165deg,#0C0818 0%,#191038 55%,#241552 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,rgba(200,160,255,.05) 0 1px,transparent 1px 48px),
+    repeating-linear-gradient(90deg,rgba(200,160,255,.05) 0 1px,transparent 1px 48px);
+  -webkit-mask-image:radial-gradient(760px 460px at 66% 55%,#000 30%,transparent 80%);
+  mask-image:radial-gradient(760px 460px at 66% 55%,#000 30%,transparent 80%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero__tag{
+  display:inline-block;font-size:10.5px;letter-spacing:.24em;font-weight:700;color:var(--vio);
+  border:1px solid rgba(192,132,252,.4);border-radius:999px;padding:5px 16px;
+  background:rgba(192,132,252,.08);
+}
+.hero__title{
+  margin-top:22px;font-size:clamp(48px,7vw,92px);font-weight:800;line-height:1.06;
+  color:#F5F1FF;letter-spacing:-.01em;
+}
+.hero__title em{
+  font-style:normal;
+  background:linear-gradient(92deg,#C084FC 8%,#E879F9 55%,#818CF8 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero__sub{margin-top:16px;font-size:clamp(14px,1.5vw,17px);letter-spacing:.18em;color:rgba(245,241,255,.62);font-weight:600}
+.hero__desc{margin-top:18px;color:var(--mute);font-size:15px;max-width:540px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:26px}
+.hero__meta li{font-size:12.5px;font-weight:600;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:7px 16px;letter-spacing:.04em;background:rgba(23,16,41,.6)}
+.hero__meta li b{color:var(--vio);font-weight:700}
+
+/* hero devices cluster */
+.hero__stage{position:relative;height:clamp(320px,38vw,500px);margin-top:clamp(36px,5vw,64px)}
+.t-pad{
+  position:absolute;padding:8px;border-radius:14px;
+  background:linear-gradient(160deg,#241A3E,#0C0818);
+  border:1px solid rgba(216,180,254,.24);
+  box-shadow:0 50px 100px -34px rgba(5,2,20,.85);
+}
+.t-pad img{width:100%;height:auto;display:block;border-radius:8px;background:#fff}
+.t-pad--main{right:0;top:0;width:min(62%,700px);transform:perspective(1700px) rotateY(-13deg) rotateX(5deg);z-index:2}
+.t-pad--back{left:2%;bottom:-40px;width:min(44%,480px);transform:perspective(1700px) rotateY(11deg) rotateX(6deg);z-index:1;opacity:.96}
+.t-phone{
+  position:absolute;right:6%;bottom:-90px;width:clamp(170px,16vw,240px);z-index:3;
+  border-radius:30px;border:7px solid #221838;background:#000;overflow:hidden;
+  box-shadow:0 44px 80px -30px rgba(5,2,20,.8);
+  transform:rotate(-3deg);
+}
+.t-phone img{width:100%;height:auto;display:block}
+
+/* ============ numbered sections ============ */
+.vizsec{padding:clamp(72px,10vw,120px) 0 0}
+.vizsec__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.vizsec__no{
+  font-size:clamp(26px,3vw,42px);font-weight:800;line-height:1;
+  color:var(--vio);font-variant-numeric:tabular-nums;
+}
+.vizsec__title{font-size:clamp(22px,2.8vw,36px);font-weight:800;letter-spacing:.01em}
+.vizsec__en{font-size:11px;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;font-weight:600}
+.vizsec__desc{margin-top:14px;color:var(--mute);font-size:14.5px;max-width:680px}
+
+/* 手机端一排 */
+.t-phones{display:flex;gap:clamp(14px,2vw,26px);margin-top:clamp(26px,3.4vw,40px);flex-wrap:wrap}
+.t-phones figure{flex:1 1 180px;max-width:230px;min-width:170px}
+.t-phones .shot{
+  border-radius:26px;border:6px solid #221838;background:#000;overflow:hidden;height:400px;
+  box-shadow:0 34px 64px -26px rgba(5,2,20,.7);
+  transition:transform .5s var(--ease);
+}
+.t-phones figure:hover .shot{transform:translateY(-6px)}
+.t-phones .shot img{width:100%;height:auto;display:block}
+.t-phones figcaption{margin-top:12px;font-size:12.5px;color:var(--mute);display:flex;gap:9px;align-items:baseline}
+.t-phones figcaption b{color:var(--vio);font-size:11px;font-weight:700;letter-spacing:.08em}
+.t-phones figcaption strong{color:var(--ink);font-size:13px}
+
+/* Pad 端画廊 */
+.t-pads{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,30px);margin-top:clamp(26px,3.4vw,40px)}
+.t-pads figure{
+  border-radius:14px;overflow:hidden;
+  border:1px solid rgba(216,180,254,.26);
+  background:linear-gradient(160deg,#241A3E,#0C0818);
+  box-shadow:0 44px 84px -36px rgba(5,2,20,.7);
+  transition:transform .5s var(--ease),border-color .5s;
+}
+.t-pads figure:hover{transform:translateY(-6px);border-color:rgba(216,180,254,.5)}
+.t-pads figure.tall{grid-row:span 2}
+.t-pads .bar{
+  display:flex;align-items:center;gap:6px;padding:10px 14px;
+  border-bottom:1px solid rgba(216,180,254,.14);
+}
+.t-pads .bar i{width:9px;height:9px;border-radius:50%;background:#3A2C5C;display:block}
+.t-pads .bar i:nth-child(1){background:var(--vio);opacity:.7}
+.t-pads .bar span{margin-left:8px;font-size:11px;color:var(--dim);letter-spacing:.06em}
+.t-pads img{width:100%;height:auto;display:block}
+.t-pads figcaption{padding:14px 18px 16px;display:flex;gap:10px;align-items:baseline}
+.t-pads figcaption b{color:var(--vio);font-size:11px;font-weight:700;letter-spacing:.08em}
+.t-pads figcaption strong{color:var(--ink);font-size:13.5px}
+.t-pads figcaption em{font-style:normal;color:var(--dim);font-size:12px;margin-left:auto;text-align:right}
+
+/* 设计要点卡片 */
+.t-points{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(26px,3.4vw,40px)}
+.t-point{
+  border:1px solid var(--line);border-radius:16px;
+  background:linear-gradient(165deg,rgba(192,132,252,.07),rgba(12,8,24,.4) 60%);
+  padding:clamp(22px,2.6vw,32px);
+  transition:border-color .4s,transform .5s var(--ease);
+}
+.t-point:hover{border-color:rgba(192,132,252,.45);transform:translateY(-4px)}
+.t-point b{
+  font-size:12px;color:var(--vio);letter-spacing:.14em;font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.t-point h3{margin-top:10px;font-size:17px;font-weight:800;color:var(--ink)}
+.t-point p{margin-top:10px;font-size:13.5px;color:var(--mute);line-height:1.85}
+
+/* 走查表 */
+.audit{
+  margin-top:clamp(26px,3.4vw,40px);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+}
+.audit__row{
+  display:grid;grid-template-columns:150px 1fr 1.3fr;
+}
+.audit__row:not(:first-child){border-top:1px solid rgba(192,132,252,.12)}
+.audit__row>*{padding:16px 22px;font-size:13px}
+.audit__row>strong{color:var(--vio);font-weight:700;background:rgba(192,132,252,.06)}
+.audit__row>span:nth-child(2){color:var(--mute)}
+.audit__row>span:nth-child(3){color:var(--ink)}
+
+/* ============ footer ============ */
+.foot{border-top:1px solid rgba(192,132,252,.14);margin-top:clamp(72px,10vw,120px);padding:44px 0 56px}
+.foot__in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot__prev,.foot__next{display:inline-flex;flex-direction:column;gap:4px;max-width:44%}
+.foot__next{margin-left:auto;text-align:right;align-items:flex-end}
+.foot__prev small,.foot__next small{font-size:11px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.foot__prev strong,.foot__next strong{font-size:15px;font-weight:700;color:var(--ink);transition:color .3s}
+.foot__prev:hover strong,.foot__next:hover strong{color:var(--vio)}
+
+/* —— 返回导航（与项目1一致） —— */
+.case-back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.04em;color:var(--mute);
+  margin-bottom:clamp(24px,3vw,40px);
+  transition:color .3s,gap .3s;
+}
+.case-back:hover{color:var(--ink);gap:12px}
+.case-next{border-top:1px solid var(--line);padding:clamp(48px,6vw,88px) 0;text-align:center}
+.case-next__link{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:clamp(26px,3.4vw,44px);
+  font-weight:800;letter-spacing:-.03em;line-height:1.2;color:var(--ink);
+  transition:color .35s,gap .35s;
+}
+.case-next__link:hover{color:var(--vio);gap:22px}
+.case-next__sub{margin-top:14px;font-size:12px;letter-spacing:.1em;color:var(--mute)}
+
+@media (max-width:820px){
+  .hero__stage{height:118vw}
+  .t-pad--main{width:74%;top:0}
+  .t-pad--back{width:52%;bottom:-30px}
+  .t-phone{right:2%;bottom:-40px;width:34vw;min-width:140px}
+  .t-phones .shot{height:300px}
+  .t-pads{grid-template-columns:1fr}
+  .t-pads figure.tall{grid-row:auto}
+  .t-points{grid-template-columns:1fr}
+  .audit__row{grid-template-columns:1fr}
+  .audit__row:not(:first-child){border-top:1px solid rgba(192,132,252,.12)}
+  .audit__row>*{padding:12px 18px}
+  .audit__row>strong{padding-bottom:0;border-bottom:none}
+  .audit__row>span:nth-child(2){padding-bottom:0}
+  .audit__row>span:nth-child(3){padding-bottom:16px}
+  .foot__in{justify-content:center;text-align:center}
+  .foot__prev,.foot__next{max-width:100%;margin:0;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top__in">
+    <a class="top__back" href="index.html#work">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      返回作品集
+    </a>
+    <span class="top__meta">PROJECT 05 · AI ASSISTANT</span>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <a class="case-back" href="index.html#work"><span aria-hidden="true">←</span> 返回项目列表</a>
+    <div class="reveal">
+      <span class="hero__tag">TALENT AI ASSISTANT</span>
+      <h1 class="hero__title">人才<em>智能检索</em>助理</h1>
+      <p class="hero__sub">用一句话，找到对的人</p>
+      <p class="hero__desc">面向集团内部的 AI 人才检索助理：按住说话，AI 解析检索条件、筛选人才、一键 PK 对比。从功能架构、机器人形象到界面视觉，独立完成手机端与 Pad 端全流程设计。</p>
+      <ul class="hero__meta">
+        <li><b>11</b> 个核心界面</li>
+        <li>手机 + <b>Pad</b> 双端</li>
+        <li>语音对话检索</li>
+        <li>2024 — 2025</li>
+      </ul>
+    </div>
+    <div class="hero__stage reveal">
+      <div class="t-pad t-pad--main">
+        <img src="assets/talent-p2.jpg" alt="人才智能检索助理 Pad 端检索成功页" loading="lazy">
+      </div>
+      <div class="t-pad t-pad--back">
+        <img src="assets/talent-p5.jpg" alt="人才智能检索助理 Pad 端 PK 结果页" loading="lazy">
+      </div>
+      <div class="t-phone">
+        <img src="assets/talent-m0.jpg" alt="人才智能检索助理手机端初始状态" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 手机端 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">01</span>
+      <h2 class="vizsec__title">手机端 · 对话式检索流程</h2>
+      <span class="vizsec__en">Mobile · 5 Screens</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>从打招呼到拿到结论，一条完整的对话链路：开口提问 → 条件解析 → 名单筛选 → 人才 PK → 查看人才档案。每一步都把「AI 想清楚了什么」讲给用户听。</p>
+    <div class="t-phones" data-reveal>
+      <figure>
+        <div class="shot"><img src="assets/talent-m0.jpg" alt="手机端初始状态" loading="lazy"></div>
+        <figcaption><b>01</b><strong>初始状态</strong></figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="assets/talent-m1.jpg" alt="手机端条件解析与筛选结果" loading="lazy"></div>
+        <figcaption><b>02</b><strong>条件解析 · 筛选</strong></figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="assets/talent-m2.jpg" alt="手机端检索列表与对比入口" loading="lazy"></div>
+        <figcaption><b>03</b><strong>检索列表 · 对比入口</strong></figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="assets/talent-m3.jpg" alt="手机端人才 PK 对比" loading="lazy"></div>
+        <figcaption><b>04</b><strong>人才 PK 对比</strong></figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="assets/talent-m4.jpg" alt="手机端人才信息页" loading="lazy"></div>
+        <figcaption><b>05</b><strong>人才信息档案</strong></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Pad 端 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">02</span>
+      <h2 class="vizsec__title">Pad 端 · 沉浸式检索工作台</h2>
+      <span class="vizsec__en">Pad · 6 Screens</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>横屏三栏布局：左侧人才列表、中间条件修改、右侧对话助理，支持边聊边改边看。从空状态的引导，到检索成功、人才 PK 与档案详情，覆盖完整使用旅程。</p>
+    <div class="t-pads" data-reveal>
+      <figure>
+        <div class="bar"><i></i><i></i><i></i><span>Pad 端 · 默认状态（无聊天记录）</span></div>
+        <img src="assets/talent-p0.jpg" alt="Pad 端默认状态无聊天记录" loading="lazy">
+        <figcaption><b>01</b><strong>默认状态</strong><em>空场景引导，先给用户能问的问题</em></figcaption>
+      </figure>
+      <figure>
+        <div class="bar"><i></i><i></i><i></i><span>Pad 端 · 检索成功</span></div>
+        <img src="assets/talent-p2.jpg" alt="Pad 端检索成功页" loading="lazy">
+        <figcaption><b>02</b><strong>检索成功</strong><em>对话 + 名单同屏，边问边看</em></figcaption>
+      </figure>
+      <figure class="tall">
+        <div class="bar"><i></i><i></i><i></i><span>Pad 端 · 默认状态（有聊天记录）</span></div>
+        <img src="assets/talent-p1.jpg" alt="Pad 端有聊天记录状态" loading="lazy">
+        <figcaption><b>03</b><strong>多轮对话</strong><em>保留上下文的连续检索</em></figcaption>
+      </figure>
+      <figure>
+        <div class="bar"><i></i><i></i><i></i><span>Pad 端 · 空状态</span></div>
+        <img src="assets/talent-p3.jpg" alt="Pad 端空状态" loading="lazy">
+        <figcaption><b>04</b><strong>空状态</strong><em>降低首次使用的理解成本</em></figcaption>
+      </figure>
+      <figure>
+        <div class="bar"><i></i><i></i><i></i><span>Pad 端 · 人才 PK · 查看简历</span></div>
+        <img src="assets/talent-p4.jpg" alt="Pad 端人才 PK 查看简历" loading="lazy">
+        <figcaption><b>05</b><strong>人才 PK · 简历</strong><em>勾选两位人才，展开对比</em></figcaption>
+      </figure>
+      <figure>
+        <div class="bar"><i></i><i></i><i></i><span>Pad 端 · PK 结果</span></div>
+        <img src="assets/talent-p5.jpg" alt="Pad 端 PK 结果页" loading="lazy">
+        <figcaption><b>06</b><strong>PK 结果</strong><em>维度对比，差异一目了然</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 设计背景 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">03</span>
+      <h2 class="vizsec__title">设计背景</h2>
+      <span class="vizsec__en">Background</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>传统的人才系统靠多级表单检索，条件一多就变成「填表大赛」。这个项目把入口换成了对话：用户说一句话，AI 负责把模糊描述拆成结构化条件——考核评价、司龄、机构、职级——再给出可解释的筛选结果。我负责功能需求拆解与逻辑梳理、设计规范制定、机器人形象设计，以及双端全流程页面设计。</p>
+  </div>
+</section>
+
+<!-- 04 设计要点 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">04</span>
+      <h2 class="vizsec__title">设计要点</h2>
+      <span class="vizsec__en">Design Decisions</span>
+    </div>
+    <div class="t-points" data-reveal>
+      <div class="t-point">
+        <b>POINT 01</b>
+        <h3>语音优先的对话流</h3>
+        <p>「按住说话」是唯一的常驻主操作。示例问题 chips 沉淀高频问法，换一换降低重复感；解析出的条件以文本回显，让 AI 的理解过程可验证、可纠正。</p>
+      </div>
+      <div class="t-point">
+        <b>POINT 02</b>
+        <h3>亲和的机器人形象</h3>
+        <p>为项目独立设计花朵形 AI 机器人形象，圆眼软轮廓传递「帮忙不抢戏」的气质；在欢迎语、空状态、加载中反复出现，建立情绪连续性。</p>
+      </div>
+      <div class="t-point">
+        <b>POINT 03</b>
+        <h3>双端一致性</h3>
+        <p>手机端纵向对话流、Pad 端三栏工作台，组件与状态语义同源同规范；同一轮会话在两端无缝延续，学习成本只有一次。</p>
+      </div>
+      <div class="t-point">
+        <b>POINT 04</b>
+        <h3>PK 对比的确定性</h3>
+        <p>勾选两位人才即可一键对比；雷达式维度条（九宫格、能力评价、专业技能、绩效考核、动机）以百分比双向呈现，结论看得见依据。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 走查 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">05</span>
+      <h2 class="vizsec__title">走查与落地</h2>
+      <span class="vizsec__en">Design QA</span>
+    </div>
+    <div class="audit" data-reveal>
+      <div class="audit__row"><strong>状态覆盖</strong><span>空状态 / 无聊天记录 / 多轮对话 / 检索成功 / PK 结果全链路补齐</span><span>每个状态都有引导文案与机器人形象，不出现「白屏等 AI」</span></div>
+      <div class="audit__row"><strong>语音交互</strong><span>按住说话 + 键盘兜底双通道，示例句可一键发送</span><span>说话失败不阻断流程，文本输入始终可用</span></div>
+      <div class="audit__row"><strong>结果可解释</strong><span>AI 解析条件逐条回显，支持「修改检索条件」重设</span><span>不满意可结束本轮会话，重新组织语言再问</span></div>
+      <div class="audit__row"><strong>双端适配</strong><span>手机 375 基准 · Pad 横屏三栏布局</span><span>组件同源，断点处自动降级为单栏</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 返回作品集 -->
+<section class="case-next">
+  <div class="wrap">
+    <a class="case-next__link" href="index.html#work">返回作品集<span aria-hidden="true">→</span></a>
+    <p class="case-next__sub">精选项目 · App / Web / 大屏 / AI 助手</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="foot__prev" href="project-dash.html">
+      <small>Prev Project</small>
+      <strong>← 阳光科技大屏 · 数据可视化</strong>
+    </a>
+    <span class="foot__next">
+      <small>UI Designer</small>
+      <strong>赵晓钰 · 作品集</strong>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target)}});
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
