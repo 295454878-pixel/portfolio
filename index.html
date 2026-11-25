@@ -13,8 +13,24 @@
 <link rel="preload" as="image" href="assets/hero-poster.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E0E10'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23E86A12'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="ds.css">
 </head>
 <body>
+<script>
+/* 从详情页返回：首帧绘制前恢复滚动位置，无任何进场动画 */
+try {
+  if (sessionStorage.getItem('ds-returning') === '1') {
+    sessionStorage.removeItem('ds-returning');
+    document.documentElement.classList.add('ds-ready');
+    var y = parseInt(sessionStorage.getItem('ds-scrollY') || '0', 10);
+    if (y > 0) {
+      window.scrollTo(0, y);
+      window.__dsPendingLenis = y;
+      sessionStorage.removeItem('ds-scrollY');
+    }
+  }
+} catch (e) {}
+</script>
 <!--
   ============================================================
   内容替换清单（初版：赵晓钰 → 已按赵晓钰简历更新）
@@ -56,36 +72,37 @@
 <main id="main">
 
   <!-- ==================== 模块 1 · Hero 沉浸式影像层 ==================== -->
-  <section class="hero" id="top">
-    <div class="hero__media" aria-hidden="true">
-      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
-             poster="assets/hero-poster.jpg" tabindex="-1">
-        <source src="assets/hero-loop.mp4" type="video/mp4">
-      </video>
-      <div class="hero__veil"></div>
-    </div>
+  <section class="hero hero--badge" id="top">
+    <!-- 超大衬线字 -->
+    <h1 class="hero__big" id="heroBig">
+      <span class="hero__big-line"><span class="hero__big-w1">Portfolio</span> <em>2026</em></span>
+    </h1>
 
-    <div class="hero__content container">
-      <div class="hero__text">
-        <p class="hero__kicker">PORTFOLIO 2026 &nbsp;/&nbsp; 高级 UI 设计师</p>
-        <h1 class="hero__title">
-          <span class="hero__line"><span>UI Designer</span></span>
-          <span class="hero__line"><span>赵晓钰</span></span>
-        </h1>
-        <p class="hero__sub">网页端 · App 端 · 数据可视化</p>
+    <!-- 挂绳工牌（可拖拽甩动） -->
+    <div class="badge-rig" id="badgeRig" aria-label="2026 作品集工作牌">
+      <div class="badge-swing" id="badgeSwing">
+        <svg class="badge-strap" viewBox="0 -12 420 162" aria-hidden="true">
+          <path d="M96 -12 L210 138" class="badge-strap-line"></path>
+          <path d="M324 -12 L210 138" class="badge-strap-line"></path>
+          <rect x="186" y="112" width="48" height="12" rx="6" fill="#191A1D"></rect>
+        </svg>
+        <div class="badge-card" id="badgeCard">
+          <span class="badge-punch" aria-hidden="true"><i></i></span>
+          <div class="badge-inner">
+            <div class="badge-photo"><img src="assets/badge-avatar.jpg" alt="赵晓钰卡通形象" width="600" height="550" decoding="async"></div>
+            <div class="badge-cn">2026 <em>作品集</em></div>
+            <div class="badge-en">PORTFOLIO · ZHAO XIAOYU</div>
+            <div class="badge-row"><span>赵晓钰</span><span>高级 UI 设计师</span></div>
+            <div class="badge-pills" aria-hidden="true"><i class="badge-pill badge-pill--r">Web</i><i class="badge-pill badge-pill--g">App</i><i class="badge-pill badge-pill--b">大屏</i></div>
+          </div>
+        </div>
       </div>
-
-      <figure class="hero__mascot" aria-hidden="true">
-        <span class="hero__halo"></span>
-        <img class="hero__mascot-img" src="assets/mascot.png" alt="" width="982" height="1345" decoding="async">
-        <span class="hero__chip hero__chip--1">9 年经验</span>
-        <span class="hero__chip hero__chip--2">Web · App · 大屏</span>
-        <span class="hero__chip hero__chip--3"><i></i>期望城市 · 北京</span>
-        <b class="hero__spark hero__spark--1">✦</b>
-        <b class="hero__spark hero__spark--2">✦</b>
-        <b class="hero__spark hero__spark--3">✦</b>
-      </figure>
     </div>
+
+    <!-- 四角小字 -->
+    <p class="hero__note hero__note--tl">让产品与它背后的故事被看见<br><span>[ 设计 · 9 年 ]</span></p>
+    <p class="hero__note hero__note--tr">UI 设计师 · 现居北京<br><span>[ 网页端 · App · 大屏 ]</span></p>
+    <b class="hero__star" aria-hidden="true">✦</b>
 
     <div class="hero__meta container">
       <span class="hero__meta-item">期望城市 · 北京</span>
@@ -179,16 +196,17 @@
     <div class="container">
       <div class="work__head">
         <p class="eyebrow">02 — 精选项目</p>
-        <h2 class="work__title">五个项目，四种尺度</h2>
-        <p class="work__lead">从手掌里的 App，到十米外的大屏。同一套规则在不同尺寸上的答案。</p>
+        <h2 class="work__title">六个项目，五种尺度</h2>
+        <p class="work__lead">从手掌里的 App，到十米外的大屏，再到印刷现场的物料。同一套规则在不同尺寸上的答案。</p>
       </div>
 
       <div class="tabs" role="tablist" aria-label="按类型筛选项目">
-        <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">全部<span>05</span></button>
+        <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">全部<span>06</span></button>
         <button class="tab" role="tab" aria-selected="false" data-filter="app">App<span>01</span></button>
         <button class="tab" role="tab" aria-selected="false" data-filter="web">Web<span>02</span></button>
         <button class="tab" role="tab" aria-selected="false" data-filter="screen">大屏<span>01</span></button>
         <button class="tab" role="tab" aria-selected="false" data-filter="ai">AI 助手<span>01</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="print">平面<span>01</span></button>
       </div>
     </div>
 
@@ -463,6 +481,59 @@
         </div>
       </article>
 
+      <!-- —— 项目 06 · 平面 —— -->
+      <article class="project" data-cat="print" data-reveal>
+        <div class="container project__grid">
+          <div class="project__media" data-parallax>
+            <div class="stage stage--print">
+              <div class="stage__inner">
+                <div class="print-cover">
+                  <span class="app-cover__meta app-cover__meta--tl">EVENT VISUAL SYSTEM<br>河南 · 招才引智</span>
+                  <span class="app-cover__meta app-cover__meta--tr">06 / 平面<br>2023 — 2024</span>
+                  <span class="print-cover__reg print-cover__reg--1" aria-hidden="true">⊕</span>
+                  <span class="print-cover__reg print-cover__reg--2" aria-hidden="true">⊕</span>
+                  <h4 class="print-cover__word">会展<em>视觉</em></h4>
+                  <p class="print-cover__sub">广聚天下英才 · 让中原更加出彩</p>
+                  <ul class="print-cover__swatches" aria-label="系列色彩">
+                    <li style="background:#12A48F"><i>上海</i></li>
+                    <li style="background:#2B63E8"><i>北京</i></li>
+                    <li style="background:#123B8F"><i>香港</i></li>
+                  </ul>
+                  <div class="print-cover__panel print-cover__panel--sh">
+                    <img src="assets/event-kv-sh.jpg" alt="上海专场主视觉" loading="lazy" decoding="async">
+                    <span>PROOF 01 · 上海</span>
+                  </div>
+                  <div class="print-cover__panel print-cover__panel--bj">
+                    <img src="assets/event-kv-bj.jpg" alt="北京专场主视觉" loading="lazy" decoding="async">
+                    <span>PROOF 02 · 北京</span>
+                  </div>
+                  <span class="app-cover__meta app-cover__meta--bl">招才引智系列活动 · 3 场</span>
+                  <span class="app-cover__meta app-cover__meta--br">主 KV + 全套物料</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project__text">
+            <p class="project__index">06 / 平面</p>
+            <h3 class="project__name">招才引智系列 · 会展视觉设计</h3>
+            <p class="project__desc">河南招才引智创新发展大会省外招聘系列活动的整体视觉：一套版式语言跨城市延展——上海青绿、北京湛蓝、香港深蓝。从主 KV、证件、桌位图到门头、倒计时与人才市集，从印刷打样一路跟进到现场落地。</p>
+            <ul class="project__tags" aria-label="项目标签">
+              <li>会展视觉</li>
+              <li>主 KV + 全套物料</li>
+              <li>三城三场落地</li>
+            </ul>
+            <dl class="project__meta">
+              <div><dt>角色</dt><dd>平面视觉 / 全案设计</dd></div>
+              <div><dt>载体</dt><dd>主 KV · 证件 · 桌位图 · 门头 · 倒计时</dd></div>
+              <div><dt>年份</dt><dd>2023 — 2024</dd></div>
+              <div><dt>篇幅</dt><dd>上海 · 北京 · 香港 · 30+ 物料</dd></div>
+            </dl>
+            <a class="arrow-link" href="project-event.html">查看设计思路<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -551,5 +622,6 @@
 </main>
 
 <script src="script.js" defer></script>
+<script src="ds.js" defer></script>
 </body>
 </html>

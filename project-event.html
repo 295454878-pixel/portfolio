@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>招才引智系列 · 会展视觉设计 — 赵晓钰</title>
+<meta name="description" content="河南招才引智创新发展大会省外招聘系列活动：上海、北京、香港三地会展视觉系统，主 KV 与全套会务物料 — UI 设计师赵晓钰">
+<style>
+:root{
+  --bg:#F4F4F0;
+  --panel:#FFFFFF;
+  --line:rgba(16,62,54,.16);
+  --ink:#101613;
+  --mute:#5C6B67;
+  --dim:#8A968F;
+  --teal:#0EA48D;
+  --teal-deep:#0B7E6E;
+  --bj:#2B63E8;
+  --w:1200px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+  font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;background:rgba(244,244,240,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top__in{max-width:var(--w);margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.top__back{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--mute);transition:color .3s}
+.top__back:hover{color:var(--ink)}
+.top__back svg{width:14px;height:14px}
+.top__meta{font-size:12px;letter-spacing:.14em;color:var(--dim);font-weight:500}
+
+/* ============ hero ============ */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(80px,11vw,150px) 0 clamp(56px,8vw,110px);
+  background:
+    radial-gradient(680px 360px at 88% 10%,rgba(14,164,141,.14),transparent 70%),
+    radial-gradient(520px 300px at 4% 84%,rgba(43,99,232,.12),transparent 72%),
+    linear-gradient(170deg,#F7F7F3 0%,#EFF3F0 55%,#E9EEF2 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,rgba(16,98,86,.05) 0 1px,transparent 1px 44px),
+    repeating-linear-gradient(90deg,rgba(16,98,86,.05) 0 1px,transparent 1px 44px);
+  -webkit-mask-image:radial-gradient(720px 440px at 30% 40%,#000 30%,transparent 80%);
+  mask-image:radial-gradient(720px 440px at 30% 40%,#000 30%,transparent 80%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero__tag{
+  display:inline-block;font-size:10.5px;letter-spacing:.24em;font-weight:700;color:var(--teal-deep);
+  border:1px solid rgba(14,164,141,.4);border-radius:999px;padding:5px 16px;
+  background:rgba(14,164,141,.08);
+}
+.hero__title{
+  margin-top:22px;font-size:clamp(48px,7vw,92px);font-weight:800;line-height:1.06;
+  color:var(--ink);letter-spacing:-.01em;
+}
+.hero__title em{
+  font-style:normal;
+  background:linear-gradient(92deg,#0EA48D 8%,#0B7E6E 48%,#2B63E8 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero__sub{margin-top:16px;font-size:clamp(14px,1.5vw,17px);letter-spacing:.18em;color:rgba(16,22,19,.62);font-weight:600}
+.hero__desc{margin-top:18px;color:var(--mute);font-size:15px;max-width:560px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:26px}
+.hero__meta li{font-size:12.5px;font-weight:600;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:7px 16px;letter-spacing:.04em;background:rgba(255,255,255,.6)}
+.hero__meta li b{color:var(--teal-deep);font-weight:700}
+
+/* hero 双城 KV 面板 */
+.hero__stage{position:relative;height:clamp(320px,36vw,480px);margin-top:clamp(36px,5vw,64px)}
+.kv{
+  position:absolute;border-radius:10px;overflow:hidden;
+  border:6px solid #FFFFFF;background:#fff;
+  box-shadow:0 44px 90px -34px rgba(16,40,36,.45);
+}
+.kv img{width:100%;height:auto;display:block}
+.kv--sh{left:0;top:0;width:min(56%,640px);transform:rotate(-2.4deg);z-index:2}
+.kv--bj{right:0;bottom:-46px;width:min(52%,600px);transform:rotate(2deg);z-index:1}
+.kv__tag{
+  position:absolute;left:14px;bottom:12px;z-index:2;
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  color:#fff;background:rgba(10,30,26,.55);backdrop-filter:blur(6px);
+  padding:5px 12px;border-radius:999px;
+}
+
+/* ============ numbered sections ============ */
+.vizsec{padding:clamp(72px,10vw,120px) 0 0}
+.vizsec__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.vizsec__no{
+  font-size:clamp(26px,3vw,42px);font-weight:800;line-height:1;
+  color:var(--teal);font-variant-numeric:tabular-nums;
+}
+.vizsec__title{font-size:clamp(22px,2.8vw,36px);font-weight:800;letter-spacing:.01em}
+.vizsec__en{font-size:11px;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;font-weight:600}
+.vizsec__desc{margin-top:14px;color:var(--mute);font-size:14.5px;max-width:680px}
+
+/* 全宽物料画板 */
+.boards{display:grid;gap:clamp(22px,3vw,34px);margin-top:clamp(26px,3.4vw,40px)}
+.board{
+  border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--panel);
+  box-shadow:0 40px 80px -40px rgba(16,40,36,.35);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.board:hover{transform:translateY(-6px);box-shadow:0 54px 100px -40px rgba(16,40,36,.5)}
+.board .bar{
+  display:flex;align-items:center;gap:6px;padding:11px 16px;
+  border-bottom:1px solid var(--line);background:rgba(255,255,255,.7);
+}
+.board .bar i{width:9px;height:9px;border-radius:50%;background:#D6DAD4;display:block}
+.board .bar i:nth-child(1){background:var(--teal);opacity:.75}
+.board .bar span{margin-left:8px;font-size:11px;color:var(--dim);letter-spacing:.06em}
+.board img{width:100%;height:auto;display:block}
+.board figcaption{
+  padding:14px 18px 16px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;
+  border-top:1px solid var(--line);
+}
+.board figcaption b{color:var(--teal-deep);font-size:11px;font-weight:700;letter-spacing:.08em}
+.board figcaption strong{color:var(--ink);font-size:13.5px}
+.board figcaption em{font-style:normal;color:var(--dim);font-size:12px;margin-left:auto;text-align:right}
+
+/* 设计要点卡片 */
+.t-points{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(26px,3.4vw,40px)}
+.t-point{
+  border:1px solid var(--line);border-radius:16px;
+  background:linear-gradient(165deg,rgba(14,164,141,.07),rgba(255,255,255,.6) 60%);
+  padding:clamp(22px,2.6vw,32px);
+  transition:border-color .4s,transform .5s var(--ease);
+}
+.t-point:hover{border-color:rgba(14,164,141,.45);transform:translateY(-4px)}
+.t-point b{
+  font-size:12px;color:var(--teal-deep);letter-spacing:.14em;font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.t-point h3{margin-top:10px;font-size:17px;font-weight:800;color:var(--ink)}
+.t-point p{margin-top:10px;font-size:13.5px;color:var(--mute);line-height:1.85}
+
+/* ============ footer ============ */
+.foot{border-top:1px solid var(--line);margin-top:clamp(72px,10vw,120px);padding:44px 0 56px}
+.foot__in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot__prev,.foot__next{display:inline-flex;flex-direction:column;gap:4px;max-width:44%}
+.foot__next{margin-left:auto;text-align:right;align-items:flex-end}
+.foot__prev small,.foot__next small{font-size:11px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.foot__prev strong,.foot__next strong{font-size:15px;font-weight:700;color:var(--ink);transition:color .3s}
+.foot__prev:hover strong,.foot__next:hover strong{color:var(--teal-deep)}
+
+/* —— 返回导航（与其他项目一致） —— */
+.case-back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.04em;color:var(--mute);
+  margin-bottom:clamp(24px,3vw,40px);
+  transition:color .3s,gap .3s;
+}
+.case-back:hover{color:var(--ink);gap:12px}
+.case-next{border-top:1px solid var(--line);padding:clamp(48px,6vw,88px) 0;text-align:center}
+.case-next__link{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:clamp(26px,3.4vw,44px);
+  font-weight:800;letter-spacing:-.03em;line-height:1.2;color:var(--ink);
+  transition:color .35s,gap .35s;
+}
+.case-next__link:hover{color:var(--teal-deep);gap:22px}
+.case-next__sub{margin-top:14px;font-size:12px;letter-spacing:.1em;color:var(--mute)}
+
+@media (max-width:820px){
+  .hero__stage{height:120vw;margin-top:32px}
+  .kv--sh{width:74%;top:0}
+  .kv--bj{width:64%;bottom:-30px}
+  .t-points{grid-template-columns:1fr}
+  .foot__in{justify-content:center;text-align:center}
+  .foot__prev,.foot__next{max-width:100%;margin:0;align-items:center}
+  .board figcaption em{margin-left:0;text-align:left;width:100%}
+}
+</style>
+<link rel="stylesheet" href="ds.css">
+</head>
+<body>
+<header class="top">
+  <div class="top__in">
+    <a class="top__back" href="index.html#work">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      返回作品集
+    </a>
+    <span class="top__meta">PROJECT 06 · EVENT VISUAL</span>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <a class="case-back" href="index.html#work"><span aria-hidden="true">←</span> 返回项目列表</a>
+    <div class="reveal">
+      <span class="hero__tag">EVENT VISUAL SYSTEM</span>
+      <h1 class="hero__title">招才引智大会<br><em>会展视觉</em>系统</h1>
+      <p class="hero__sub">广聚天下英才 · 让中原更加出彩</p>
+      <p class="hero__desc">河南招才引智创新发展大会省外招聘系列活动的整体视觉：一套版式语言跨城市延展——上海青绿、北京湛蓝、香港深蓝，从主 KV 到证件、桌位图、易拉宝、门头与倒计时，覆盖印刷打样到现场落地的全流程。</p>
+      <ul class="hero__meta">
+        <li>上海 · 北京 · <b>香港</b> 3 场</li>
+        <li><b>30+</b> 项会务物料</li>
+        <li>主 KV 全套延展</li>
+        <li>2023 — 2024</li>
+      </ul>
+    </div>
+    <div class="hero__stage reveal">
+      <div class="kv kv--sh">
+        <img src="assets/event-kv-sh.jpg" alt="上海专场主视觉：青绿渐变与城市地标线稿" loading="lazy">
+        <span class="kv__tag">PROOF 01 · 上海专场</span>
+      </div>
+      <div class="kv kv--bj">
+        <img src="assets/event-kv-bj.jpg" alt="北京专场主视觉：湛蓝底与彩虹渐变波浪" loading="lazy">
+        <span class="kv__tag">PROOF 02 · 北京专场</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 上海 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">01</span>
+      <h2 class="vizsec__title">上海专场 · 主视觉与会务物料</h2>
+      <span class="vizsec__en">Shanghai Session</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>青绿渐变打底，白色线稿勾勒上海天际线与中原地标同框，隐喻「人才双城流动」。同一套版式延展出舞台背板、参会展企名录长图、桌位分区图、竖版易拉宝、演讲大屏与公交站亭广告。</p>
+    <div class="boards" data-reveal>
+      <figure class="board">
+        <div class="bar"><i></i><i></i><i></i><span>上海专场 · 主 KV 与全套物料</span></div>
+        <img src="assets/event-sh-1.jpg" alt="上海专场主视觉、桌位图、议程安排、竖版易拉宝与公交站亭广告物料合集" loading="lazy">
+        <figcaption><b>SET 01</b><strong>主 KV · 名录 · 桌位图 · 议程 · 竖版 KV · 站亭广告</strong><em>喷绘 + 印刷双规格输出</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 02 上海现场 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">02</span>
+      <h2 class="vizsec__title">上海专场 · 现场落地</h2>
+      <span class="vizsec__en">On Site · Shanghai</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>设计在现场的最终样貌：领导演讲背板、会场导视、签到动线与会场全景。视觉语言在现场尺度下依然成立——远看有气势，近看有信息。</p>
+    <div class="boards" data-reveal>
+      <figure class="board">
+        <div class="bar"><i></i><i></i><i></i><span>上海专场 · 现场实拍</span></div>
+        <img src="assets/event-sh-2.jpg" alt="上海专场现场：证件、签到、演讲背板、人群与展会全景实拍" loading="lazy">
+        <figcaption><b>SET 02</b><strong>证件 · 议程易拉宝 · 演讲背板 · 会场全景 · 签到动线</strong><em>现场摄影记录</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 北京 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">03</span>
+      <h2 class="vizsec__title">北京专场 · 主视觉与会务物料</h2>
+      <span class="vizsec__en">Beijing Session</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>同一版式语言切换湛蓝主色：彩虹渐变波浪延续「汇聚」意象。延展参展证、河南博士后招贤助政长图、启动仪式安排、餐券与导视箭头等全套物料。</p>
+    <div class="boards" data-reveal>
+      <figure class="board">
+        <div class="bar"><i></i><i></i><i></i><span>北京专场 · 主 KV 与全套物料</span></div>
+        <img src="assets/event-bj-1.jpg" alt="北京专场主视觉、参会展企名录、桌位图、参展证、招贤助政长图与餐券物料合集" loading="lazy">
+        <figcaption><b>SET 03</b><strong>主 KV · 名录 · 桌位图 · 参展证 · 招贤长图 · 餐券</strong><em>中国人民大学 · 世纪馆</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 04 北京现场 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">04</span>
+      <h2 class="vizsec__title">北京专场 · 现场落地</h2>
+      <span class="vizsec__en">On Site · Beijing</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>从名录墙、场馆全景到留学人才打卡合影：主视觉在现场成为可拍照、可传播的「背景板」，视觉资产在社交传播中二次增值。</p>
+    <div class="boards" data-reveal>
+      <figure class="board">
+        <div class="bar"><i></i><i></i><i></i><span>北京专场 · 现场实拍</span></div>
+        <img src="assets/event-bj-2.jpg" alt="北京专场现场：名录墙、场馆全景、打卡立牌与演讲实拍" loading="lazy">
+        <figcaption><b>SET 04</b><strong>名录墙 · 场馆全景 · 打卡立牌 · 启动仪式</strong><em>现场摄影记录</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 05 系列延展 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">05</span>
+      <h2 class="vizsec__title">系列延展 · 倒计时 / 门头 / 香港专场</h2>
+      <span class="vizsec__en">Extended System</span>
+    </div>
+    <p class="vizsec__desc" data-reveal>系统继续生长：倒计时海报、门头打卡位（含 1.2m 打卡尺寸与 3m 灯箱标注）、往届回顾长图、河南大学专场、河南省香港教育合作与文化交流会，以及「人才市集」拓招聘区的市集摊位。</p>
+    <div class="boards" data-reveal>
+      <figure class="board">
+        <div class="bar"><i></i><i></i><i></i><span>系列延展 · 倒计时 / 门头 / 香港专场 / 人才市集</span></div>
+        <img src="assets/event-extra.jpg" alt="系列延展物料：倒计时海报、门头打卡位标注图、往届回顾、香港专场与人才市集摊位" loading="lazy">
+        <figcaption><b>SET 05</b><strong>倒计时 · 门头标注 · 往届回顾 · 香港专场 · 人才市集</strong><em>规格标注到位 · 一图可施工</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 06 设计要点 -->
+<section class="vizsec">
+  <div class="wrap">
+    <div class="vizsec__head" data-reveal>
+      <span class="vizsec__no">06</span>
+      <h2 class="vizsec__title">设计要点</h2>
+      <span class="vizsec__en">Design Decisions</span>
+    </div>
+    <div class="t-points" data-reveal>
+      <div class="t-point">
+        <b>POINT 01</b>
+        <h3>一套版式，三城换色</h3>
+        <p>版式结构、字体层级、地标线稿手法完全同源，按城市切换主色与地标——上海青绿、北京湛蓝、香港深蓝。系列感与场地辨识度兼得，延展成本降到最低。</p>
+      </div>
+      <div class="t-point">
+        <b>POINT 02</b>
+        <h3>高密度信息治理</h3>
+        <p>参会展企名录数百行、桌位图数百展位：用清晰的行节奏、分区色块与对位编号组织信息，让观众在十米外找到自己的展位号。</p>
+      </div>
+      <div class="t-point">
+        <b>POINT 03</b>
+        <h3>标注到位，一图可施工</h3>
+        <p>门头打卡位标明 1.2m 打卡区与 3m 灯箱尺寸、站亭广告标注 2.3m 物理边界——所有落地物料附完整规格标注，制作方无需二次沟通。</p>
+      </div>
+      <div class="t-point">
+        <b>POINT 04</b>
+        <h3>为拍照而设计</h3>
+        <p>主视觉预留人物站位与打卡机位，现场立牌成为留学人才的合影背景。设计在现场被二次传播，视觉资产在社交渠道持续增值。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 返回作品集 -->
+<section class="case-next">
+  <div class="wrap">
+    <a class="case-next__link" href="index.html#work">返回作品集<span aria-hidden="true">→</span></a>
+    <p class="case-next__sub">精选项目 · App / Web / 大屏 / AI 助手 / 平面</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="foot__prev" href="project-talent.html">
+      <small>Prev Project</small>
+      <strong>← 人才智能检索助理</strong>
+    </a>
+    <span class="foot__next">
+      <small>UI Designer</small>
+      <strong>赵晓钰 · 作品集</strong>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target)}});
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script src="ds.js" defer></script>
+</body>
+</html>

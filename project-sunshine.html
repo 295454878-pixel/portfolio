@@ -935,6 +935,91 @@ button{font:inherit;color:inherit}
   background:var(--paper);
   padding:calc(78px + clamp(44px,6vw,88px)) 0 clamp(40px,5vw,72px);
 }
+
+/* —— 参考版式：居中大标题 + 手机阵列 + 鼠标视差 —— */
+.case-hero{
+  overflow:hidden;
+  padding-bottom:0;
+}
+.case-hero__head{
+  text-align:center;
+  max-width:900px;margin:0 auto;
+  position:relative;z-index:6;
+}
+.case-hero__title{
+  font-size:clamp(38px,5.4vw,84px);
+  font-weight:800;letter-spacing:-.038em;line-height:1.04;
+  margin-top:18px;
+}
+.case-hero__sub{
+  margin-top:clamp(16px,2vw,24px);
+  font-size:clamp(14px,1.15vw,17px);
+  letter-spacing:.02em;color:var(--muted);
+}
+.case-hero .case-meta{margin-bottom:clamp(30px,4.5vw,60px)}
+.case-hero__rack{
+  position:relative;
+  height:clamp(360px,40vw,600px);
+  margin-top:clamp(28px,4vw,56px);
+  pointer-events:none;
+}
+.rack-phone{
+  position:absolute;
+  margin:0;
+  top:50%;left:50%;
+  will-change:transform;
+}
+.rack-screen{
+  background:var(--ink);
+  border-radius:clamp(22px,2.6vw,40px);
+  padding:clamp(5px,.7vw,10px);
+  box-shadow:0 30px 70px -28px rgba(14,14,16,.4),0 10px 26px -14px rgba(14,14,16,.28);
+  overflow:hidden;
+}
+.rack-screen img{width:100%;height:auto;display:block;border-radius:clamp(17px,2vw,32px)}
+.rack-phone--main{
+  z-index:5;
+  width:clamp(220px,21vw,320px);
+  transform:translate(-50%,-46%);
+}
+.rack-phone--main .rack-screen{border-radius:clamp(26px,3vw,46px);padding:clamp(7px,.8vw,11px)}
+.rack-phone--main .rack-screen img{border-radius:clamp(20px,2.4vw,37px)}
+.rack-phone--l1,.rack-phone--r1{
+  z-index:3;
+  width:clamp(150px,14.5vw,220px);
+  transform:translate(calc(-50% - clamp(150px,20vw,330px)),-52%) rotate(-3deg);
+}
+.rack-phone--r1{transform:translate(calc(-50% + clamp(150px,20vw,330px)),-52%) rotate(3deg)}
+.rack-phone--l2,.rack-phone--r2{
+  z-index:2;
+  width:clamp(120px,11.5vw,175px);
+  transform:translate(calc(-50% - clamp(280px,36vw,600px)),-58%) rotate(-5.5deg);
+}
+.rack-phone--r2{transform:translate(calc(-50% + clamp(280px,36vw,600px)),-58%) rotate(5.5deg)}
+.rack-phone--l2 .rack-screen,.rack-phone--r2 .rack-screen{opacity:.92}
+/* 视差：JS 作用于内层 .rack-screen，外层定位/旋转不受影响 */
+.case-hero__rack.is-live .rack-screen{will-change:transform}
+/* 底部渐隐，融入下一节 */
+.case-hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(60px,7vw,120px);
+  background:linear-gradient(180deg,transparent,var(--white));
+  z-index:6;pointer-events:none;
+}
+@media (max-width:1024px){
+  .case-hero__rack{height:clamp(300px,52vw,460px)}
+  .rack-phone--l2,.rack-phone--r2{transform:translate(calc(-50% - clamp(210px,30vw,420px)),-58%) rotate(-5.5deg)}
+  .rack-phone--r2{transform:translate(calc(-50% + clamp(210px,30vw,420px)),-58%) rotate(5.5deg)}
+  .rack-phone--l1,.rack-phone--r1{transform:translate(calc(-50% - clamp(110px,16vw,230px)),-52%) rotate(-3deg)}
+  .rack-phone--r1{transform:translate(calc(-50% + clamp(110px,16vw,230px)),-52%) rotate(3deg)}
+}
+@media (max-width:620px){
+  .case-hero__rack{height:clamp(240px,64vw,360px)}
+  .rack-phone--l2,.rack-phone--r2{display:none}
+  .rack-phone--main{width:clamp(190px,52vw,240px)}
+  .rack-phone--l1,.rack-phone--r1{width:clamp(120px,34vw,170px);transform:translate(calc(-50% - 29vw),-52%) rotate(-3deg)}
+  .rack-phone--r1{transform:translate(calc(-50% + 29vw),-52%) rotate(3deg)}
+}
+
 .case-back{
   display:inline-flex;align-items:center;gap:8px;
   font-size:12px;letter-spacing:.04em;color:var(--muted);
@@ -1280,6 +1365,7 @@ button{font:inherit;color:inherit}
 
 </style>
 
+<link rel="stylesheet" href="ds.css">
 </head>
 <body>
 
@@ -1311,20 +1397,32 @@ button{font:inherit;color:inherit}
 
 <main id="main">
 
-  <!-- ==================== 项目头部 ==================== -->
-  <section class="case-head">
+  <!-- ==================== 项目头部 · 手机阵列 ==================== -->
+  <section class="case-head case-hero">
     <div class="container">
       <a class="case-back" href="index.html#work"><span aria-hidden="true">←</span> 返回项目列表</a>
-      <p class="eyebrow">PROJECT 01 &nbsp;/&nbsp; APP · 保险</p>
-      <h1 class="case-title">阳光保险 App</h1>
-      <p class="case-lead">先明确流程，再梳理思路。把「投保」这件低频、高决策成本的事，拆成四段心理过程，再让四个页面各自接住一段——每一步只回答一个问题。</p>
 
-      <dl class="case-meta">
+      <div class="case-hero__head" data-reveal>
+        <p class="eyebrow">PROJECT 01 &nbsp;—&nbsp; 阳光保险 App · 保险</p>
+        <h1 class="case-hero__title">把投保这件难事<br>拆成四段心理过程</h1>
+        <p class="case-hero__sub">四个页面各接一段动线，每一步只回答一个问题</p>
+      </div>
+
+      <dl class="case-meta" data-reveal>
         <div><dt>角色</dt><dd>高级 UI 设计师</dd></div>
         <div><dt>平台</dt><dd>iOS · Android</dd></div>
         <div><dt>年份</dt><dd>2022 — 至今</dd></div>
         <div><dt>职责</dt><dd>流程梳理 / 界面设计 / 数据可视化</dd></div>
       </dl>
+    </div>
+
+    <!-- 手机阵列 · 鼠标视差 -->
+    <div class="case-hero__rack" id="sunRack" aria-hidden="true">
+      <figure class="rack-phone rack-phone--l2" data-depth="1.6"><div class="rack-screen"><img src="assets/sun-login.jpg" alt="" width="640" height="1386" loading="eager" decoding="async"></div></figure>
+      <figure class="rack-phone rack-phone--l1" data-depth="0.9"><div class="rack-screen"><img src="assets/sun-list.jpg" alt="" width="640" height="1386" loading="eager" decoding="async"></div></figure>
+      <figure class="rack-phone rack-phone--main" data-depth="0"><div class="rack-screen"><img src="assets/sun-home.jpg" alt="阳光保险 App 首页界面" width="640" height="1386" loading="eager" decoding="async"></div></figure>
+      <figure class="rack-phone rack-phone--r1" data-depth="0.9"><div class="rack-screen"><img src="assets/sun-search.jpg" alt="" width="640" height="1386" loading="eager" decoding="async"></div></figure>
+      <figure class="rack-phone rack-phone--r2" data-depth="1.6"><div class="rack-screen"><img src="assets/sun-profile.jpg" alt="" width="640" height="1386" loading="eager" decoding="async"></div></figure>
     </div>
   </section>
 
@@ -1732,6 +1830,45 @@ button{font:inherit;color:inherit}
     });
   });
 
+  /* ---------- 4.5 手机阵列 · 鼠标视差（参考版式，仅指针设备） ---------- */
+  var rack = document.getElementById('sunRack');
+  if (rack && !reduceMotion.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 1024) {
+    rack.classList.add('is-live');
+    var rackPhones = Array.prototype.slice.call(rack.querySelectorAll('.rack-phone')).map(function (p) {
+      return {
+        el: p.querySelector('.rack-screen'),
+        depth: parseFloat(p.getAttribute('data-depth') || '0.5')
+      };
+    });
+    var rx = 0, ry = 0, tx = 0, ty = 0, rackRaf = false;
+    function rackLoop() {
+      rx += (tx - rx) * 0.08;          /* lerp 平滑 */
+      ry += (ty - ry) * 0.08;
+      rackPhones.forEach(function (p) {
+        if (p.depth === 0) {           /* 主手机：轻浮动，不横移 */
+          p.el.style.transform = 'translate3d(0,' + (ry * -6).toFixed(2) + 'px,0)';
+          return;
+        }
+        var dx = rx * 26 * p.depth;
+        var dy = ry * 12 * p.depth;
+        var rot = rx * 1.6 * p.depth;
+        p.el.style.transform = 'translate3d(' + dx.toFixed(2) + 'px,' + dy.toFixed(2) + 'px,0) rotate(' + rot.toFixed(3) + 'deg)';
+      });
+      if (Math.abs(tx - rx) > 0.001 || Math.abs(ty - ry) > 0.001) {
+        requestAnimationFrame(rackLoop);
+      } else {
+        rackRaf = false;
+      }
+    }
+    function rackWake() { if (!rackRaf) { rackRaf = true; requestAnimationFrame(rackLoop); } }
+    window.addEventListener('pointermove', function (e) {
+      tx = e.clientX / window.innerWidth - 0.5;   /* -0.5 ~ 0.5 */
+      ty = e.clientY / window.innerHeight - 0.5;
+      rackWake();
+    }, { passive: true });
+    document.addEventListener('mouseleave', function () { tx = 0; ty = 0; rackWake(); });
+  }
+
   /* ---------- 5. 图片视差（幅度 ≤ 22px，仅桌面 + 允许动效） ---------- */
   var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
   var ticking = false;
@@ -1814,5 +1951,6 @@ button{font:inherit;color:inherit}
 })();
 
 </script>
+<script src="ds.js" defer></script>
 </body>
 </html>

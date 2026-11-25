@@ -1,0 +1,466 @@
+/* ============================================================
+   ds.css — Dennis Snellenberg 风格层（全站共享）
+   预加载幕布 · 自定义光标 · 磁性按钮 · 平滑滚动 ·
+   超大字排版 · 深色巨型 Footer · 页面过渡
+   签名缓动: cubic-bezier(.7,0,.3,1)
+   ============================================================ */
+
+:root{
+  --ds-ink:#1C1D20;
+  --ds-ink-2:#141517;
+  --ds-ease:cubic-bezier(.7,0,.3,1);
+  --ds-sec-pad:clamp(5em,21vh,12em);
+  --ds-big:clamp(3.25em,7vw,8em);
+}
+
+/* ---------- Lenis 平滑滚动 ---------- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- 加载幕布（每个页面进场均播放） ---------- */
+.ds-loader{
+  position:fixed;inset:0;z-index:9500;
+  background:var(--ds-ink-2);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .9s var(--ds-ease);
+  will-change:transform;
+}
+.ds-loader.is-out{
+  transform:translateY(-101%);
+  border-bottom-left-radius:48% 8vh;
+  border-bottom-right-radius:48% 8vh;
+}
+.ds-loader__word{
+  font-size:clamp(34px,5.5vw,72px);
+  letter-spacing:.02em;font-weight:500;
+  display:flex;align-items:baseline;gap:.35em;
+}
+.ds-loader__word .dot{
+  width:.35em;height:.35em;border-radius:50%;
+  background:var(--accent-fill,#F58A1F);
+  display:inline-block;transform:translateY(-.1em);
+}
+.ds-loader__pct{
+  position:absolute;left:clamp(20px,6.5vw,96px);bottom:clamp(18px,4vw,42px);
+  font-size:clamp(44px,7vw,110px);font-weight:500;letter-spacing:-.03em;
+  line-height:1;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.92);
+}
+.ds-loader__name{
+  position:absolute;right:clamp(20px,6.5vw,96px);bottom:clamp(22px,4.2vw,48px);
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.45);
+}
+/* 防止 JS 失效时永久遮挡 */
+noscript ~ .ds-loader,.ds-loader.no-js{display:none}
+
+/* 页面进场时锁定滚动 */
+html.ds-loading,html.ds-loading body{overflow:hidden;height:100%}
+
+/* ---------- 页面过渡幕布（点击链接后从底部升起） ---------- */
+.ds-veil{
+  position:fixed;inset:0;z-index:9400;
+  background:var(--ds-ink-2);
+  transform:translateY(101%);
+  border-top-left-radius:48% 8vh;border-top-right-radius:48% 8vh;
+  pointer-events:none;
+  transition:transform .7s var(--ds-ease),border-radius .7s var(--ds-ease);
+  will-change:transform;
+}
+.ds-veil.is-in{transform:translateY(0);border-radius:0}
+
+/* ---------- 自定义光标 ---------- */
+.ds-cursor{
+  position:fixed;top:0;left:0;z-index:9990;
+  width:12px;height:12px;margin:-6px 0 0 -6px;
+  border-radius:50%;background:var(--ds-ink);
+  pointer-events:none;
+  transition:width .35s var(--ds-ease),height .35s var(--ds-ease),
+             margin .35s var(--ds-ease),background .35s var(--ds-ease),
+             opacity .3s var(--ds-ease);
+  opacity:0;
+}
+.ds-cursor.is-active{opacity:1}
+.ds-cursor.is-link{
+  width:44px;height:44px;margin:-22px 0 0 -22px;
+  background:transparent;
+  border:1.5px solid #fff;
+  mix-blend-mode:difference;
+}
+.ds-cursor.is-view{
+  width:72px;height:72px;margin:-36px 0 0 -36px;
+  background:transparent;
+  border:1.5px solid #fff;
+  mix-blend-mode:difference;
+}
+.ds-cursor__label{display:none}
+@media (hover:none),(pointer:coarse){
+  .ds-cursor{display:none}
+}
+html:not(.ds-cursor-on) .ds-cursor{display:none}
+
+/* 鼠标样式交给自定义光标 */
+html.ds-cursor-on body{cursor:none}
+html.ds-cursor-on a,html.ds-cursor-on button{cursor:none}
+/* 全站统一：自定义光标开启时，任何元素都不显示系统光标（覆盖详情页遗留的 cursor:pointer） */
+html.ds-cursor-on *{cursor:none!important}
+
+/* ---------- 排版节奏（Dennis 式） ---------- */
+html.ds-ready [data-ds-reveal]{transition:opacity .9s var(--ds-ease),transform .9s var(--ds-ease)}
+html.ds-ready [data-ds-reveal]:not(.is-in){opacity:0;transform:translateY(46px)}
+/* JS 未运行（无 IO/reduce）时兜底可见 */
+html:not(.ds-ready) [data-ds-reveal]{opacity:1;transform:none}
+
+/* 封面图悬停缓慢放大（Dennis 的图片呼吸感） */
+.project .stage img{
+  transition:transform 1.6s var(--ds-ease);
+}
+.project:hover .stage img{transform:scale(1.035)}
+/* 手机壳内图片放大略强一点 */
+.project:hover .phone-shot img{transform:scale(1.05)}
+
+/* 首屏标题行遮罩进场 */
+.hero__line{overflow:hidden;display:block}
+html.ds-loading .hero__line > span{transform:translateY(112%)}
+.hero__line > span{display:block;transition:transform 1s var(--ds-ease)}
+html.ds-ready .hero__line > span{transform:translateY(0)}
+html.ds-ready .hero__line:nth-child(2) > span{transition-delay:.08s}
+
+/* 大标题更贴近 Dennis 的体量 */
+.hero__text{position:relative;z-index:2}
+.hero__title{
+  font-size:clamp(60px,9.6vw,156px);
+  line-height:.98;letter-spacing:-.03em;
+}
+/* AI 生成视频自带角标水印：放大裁掉四角 */
+.hero__video{transform:scale(1.28);transform-origin:center}
+.hero__title .hero__line:first-child{ text-transform:uppercase; }
+.hero__kicker{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-weight:500;
+}
+.hero__kicker::before{content:"[";margin-right:.25em;opacity:.55}
+.hero__kicker::after{content:"]";margin-left:.25em;opacity:.55}
+.hero__sub{
+  font-size:clamp(15px,1.4vw,20px);
+  letter-spacing:.06em;
+}
+
+/* eyebrow → [ 编号 — 名称 ] 括号标签 */
+.eyebrow::before{content:"[ "}
+.eyebrow::after{content:" ]"}
+.eyebrow--plain::before,.eyebrow--plain::after{content:none}
+
+/* 章节标题体量放大 */
+.exp__title,.work__title,.edge__title{
+  font-size:clamp(40px,5.6vw,84px);
+  line-height:1.04;letter-spacing:-.025em;font-weight:600;
+}
+.work__lead,.edge__lead{max-width:34em}
+
+/* 章节间距向 Dennis 的呼吸感靠拢 */
+.exp,.edge{padding-block:var(--ds-sec-pad)}
+.work{padding-block:calc(var(--ds-sec-pad) * .6) var(--ds-sec-pad)}
+
+/* 项目行：顶部细线 + 序号大号化 */
+.project{border-top:1px solid var(--line);padding-top:clamp(40px,6vh,72px);margin-top:clamp(48px,8vh,96px)}
+.project:first-child{border-top:none;padding-top:0;margin-top:0}
+.project__index{
+  font-size:13px;letter-spacing:.22em;color:var(--muted);font-weight:500;
+}
+.project__name{
+  font-size:clamp(34px,4.2vw,64px);
+  line-height:1.05;letter-spacing:-.02em;font-weight:600;
+  margin-top:.35em;
+}
+.project__desc{max-width:36em}
+.project__meta{border-top:1px solid var(--line);margin-top:1.6em}
+.project__meta > div{
+  display:flex;gap:16px;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid var(--line);
+}
+.project__meta dt{font-size:12px;letter-spacing:.14em;color:var(--muted)}
+.project__meta dd{font-size:13.5px;text-align:right}
+
+/* 封面卡圆角（Dennis 的图片都是圆角矩形） */
+.stage{border-radius:16px;overflow:hidden}
+.browser__body img,.eco-cover__panel img{border-radius:0}
+
+/* 查看链接 → 深色胶囊按钮 + 悬停反色 */
+.arrow-link{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:1.8em;
+  padding:.9em 1.6em;
+  background:var(--ink);color:var(--paper);
+  border-radius:999px;
+  font-size:13.5px;letter-spacing:.06em;font-weight:500;
+  transition:background .5s var(--ds-ease),color .5s var(--ds-ease),transform .5s var(--ds-ease);
+}
+.arrow-link span{transition:transform .5s var(--ds-ease)}
+.arrow-link:hover{background:var(--accent-fill,#F58A1F);color:#101010}
+.arrow-link:hover span{transform:translateX(6px)}
+
+/* nav 链接小型大写化（仅桌面；避免穿透移动端菜单的大字号） */
+@media (min-width:821px){
+  .nav__links a{text-transform:uppercase;font-size:12px;letter-spacing:.12em}
+  .nav__links a.nav__links-mail{text-transform:none;letter-spacing:.01em}
+}
+.btn{
+  border-radius:999px;
+  transition:background .5s var(--ds-ease),color .5s var(--ds-ease);
+}
+.btn:hover{background:var(--accent-fill,#F58A1F);color:#101010}
+
+/* tabs 统一为胶囊 */
+.tab{border-radius:999px;transition:background .5s var(--ds-ease),color .5s var(--ds-ease)}
+
+/* ---------- 深色巨型 Footer（LET'S TALK 式收尾） ---------- */
+.contact{background:var(--ds-ink-2)}
+.contact__cta{
+  font-size:clamp(56px,9.5vw,150px);
+  line-height:1;letter-spacing:-.03em;font-weight:600;
+}
+.contact__mail{
+  display:inline-flex;align-items:center;gap:12px;
+  margin-top:clamp(28px,4vh,48px);
+  padding:1em 1.9em;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  font-size:15px;letter-spacing:.04em;
+  transition:background .5s var(--ds-ease),color .5s var(--ds-ease),border-color .5s var(--ds-ease);
+}
+.contact__mail:hover{background:var(--accent-fill,#F58A1F);border-color:var(--accent-fill,#F58A1F);color:#101010}
+.contact__meta{
+  display:flex;flex-wrap:wrap;gap:14px 32px;align-items:center;
+  margin-top:clamp(24px,3.6vh,40px);
+}
+.contact__status i{background:#24C958}
+/* 本地时间 / 状态（由 ds.js 注入） */
+.ds-footrow{
+  display:flex;flex-wrap:wrap;gap:12px 36px;align-items:center;
+  margin-top:clamp(36px,6vh,64px);
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.14);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+}
+.ds-footrow .dot{
+  width:8px;height:8px;border-radius:50%;background:#24C958;
+  display:inline-block;margin-right:.6em;
+  animation:ds-blink 2.4s var(--ds-ease) infinite;
+}
+@keyframes ds-blink{0%,100%{opacity:1}50%{opacity:.35}}
+.ds-footrow a{color:rgba(255,255,255,.5)}
+.ds-footrow a:hover{color:#fff}
+
+/* 下滑提示 */
+.ds-scrollhint{
+  position:absolute;left:clamp(20px,6.5vw,96px);bottom:clamp(72px,11vh,124px);
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);
+  display:flex;align-items:center;gap:.8em;
+}
+.ds-scrollhint::before{content:"[ "}
+.ds-scrollhint::after{content:" ]"}
+.ds-scrollhint i{
+  display:block;width:1px;height:34px;margin-left:.4em;
+  background:linear-gradient(var(--muted),transparent);
+  animation:ds-hint 2.2s var(--ds-ease) infinite;
+}
+@keyframes ds-hint{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- 项目详情页（fabric 式节奏） ---------- */
+.cover__title{
+  font-size:clamp(52px,8.5vw,132px) !important;
+  line-height:1;letter-spacing:-.03em;
+}
+.case-back{
+  text-transform:uppercase;font-size:12px;letter-spacing:.18em;
+}
+.case-next{background:var(--ds-ink-2)}
+.case-next .wrap{padding-block:clamp(72px,12vh,140px)}
+.case-next__link{
+  display:inline-flex;flex-direction:row;align-items:center;gap:20px;
+  color:#fff !important;
+  font-size:clamp(44px,7vw,104px) !important;
+  letter-spacing:-.03em;font-weight:600;line-height:1;
+  transition:color .5s var(--ds-ease);
+}
+.case-next__link span{transition:transform .5s var(--ds-ease)}
+.case-next__link:hover{color:var(--accent-fill,#F58A1F) !important}
+.case-next__link:hover span{transform:translateX(14px)}
+.case-next__sub{color:rgba(255,255,255,.45) !important;letter-spacing:.2em;text-transform:uppercase;font-size:11px}
+.foot{background:var(--ds-ink-2);color:rgba(255,255,255,.4)}
+.foot__in{border-top:1px solid rgba(255,255,255,.12)}
+.foot__prev,.foot__next{color:inherit}
+.foot__prev strong{color:#fff}
+.foot__prev:hover strong{color:var(--accent-fill,#F58A1F)}
+
+/* 详情页 hero meta（Role / Year / Platform 式三栏） */
+.case-hero .wrap > p,
+.cover__meta{letter-spacing:.18em}
+
+/* ---------- 降级：尊重系统减少动态偏好 ---------- */
+@media (prefers-reduced-motion: reduce){
+  .ds-loader,.ds-veil,.ds-cursor{display:none !important}
+  html.ds-loading .hero__line > span{transform:none}
+  .ds-scrollhint i{animation:none}
+}
+
+/* ============ 工牌首屏（参考 badge-hero 版式） ============ */
+.hero--badge{
+  background:
+    radial-gradient(900px 520px at 78% 6%,rgba(255,255,255,.75),transparent 70%),
+    radial-gradient(760px 480px at 8% 88%,rgba(69,92,233,.05),transparent 72%),
+    linear-gradient(176deg,#EFEFED 0%,#E9E9E7 58%,#E4E5E4 100%);
+}
+.hero--badge .hero__meta{z-index:5}
+.hero--badge .ds-scrollhint{z-index:5}
+
+/* 超大衬线字 */
+.hero__big{
+  position:absolute;left:0;right:0;z-index:1;
+  bottom:clamp(120px,17vh,190px);
+  margin:0;padding:0 var(--container-padding,4vw);
+  font-family:"Times New Roman",Times,"Songti SC",Georgia,serif;
+  font-weight:500;font-size:clamp(64px,13.2vw,215px);
+  line-height:.95;letter-spacing:-.015em;color:#151619;
+  white-space:nowrap;text-align:center;
+  transition:transform .9s var(--ds-ease);
+}
+.hero__big em{
+  font-style:italic;color:#455CE9;letter-spacing:-.01em;
+  padding-right:.04em;
+}
+html.ds-loading .hero__big{opacity:0}
+html.ds-ready .hero__big{opacity:1;transition:opacity .9s var(--ds-ease) .15s}
+
+/* 四角小字 */
+.hero__note{
+  position:absolute;z-index:5;margin:0;
+  top:clamp(96px,13vh,150px);
+  font-size:clamp(10.5px,.82vw,12.5px);line-height:1.75;letter-spacing:.08em;
+  color:rgba(21,22,25,.66);font-weight:500;
+}
+.hero__note span{opacity:.55;letter-spacing:.14em}
+.hero__note--tl{left:clamp(24px,4vw,64px)}
+.hero__note--tr{right:clamp(24px,4vw,64px);text-align:right}
+.hero__star{
+  position:absolute;z-index:5;right:clamp(120px,17vw,320px);
+  top:clamp(300px,42vh,470px);
+  font-size:clamp(15px,1.5vw,22px);color:#151619;
+  animation:ds-star-spin 7s linear infinite;
+}
+@keyframes ds-star-spin{to{transform:rotate(360deg)}}
+
+/* 挂绳 + 工牌 */
+.badge-rig{
+  position:absolute;left:0;right:0;top:0;z-index:3;
+  display:flex;justify-content:center;pointer-events:none;
+}
+.badge-swing{
+  position:relative;
+  transform-origin:50% -10px;
+  will-change:transform;
+  pointer-events:auto;
+}
+.badge-strap{
+  display:block;width:clamp(210px,22vw,300px);height:auto;
+  margin:0 auto -3px;
+  overflow:visible;
+}
+.badge-strap-line{stroke:#191A1D;stroke-width:7;fill:none;stroke-linecap:round}
+.badge-card{
+  position:relative;
+  width:clamp(240px,24vw,320px);
+  margin:0 auto;
+  border-radius:16px;
+  padding:clamp(9px,.9vw,12px);
+  background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(255,255,255,.34));
+  backdrop-filter:blur(9px) saturate(1.15);
+  -webkit-backdrop-filter:blur(9px) saturate(1.15);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:
+    0 40px 80px -30px rgba(20,24,32,.35),
+    0 12px 28px -14px rgba(20,24,32,.22),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  cursor:grab;touch-action:none;
+}
+.badge-card:active{cursor:grabbing}
+.badge-punch{
+  position:absolute;top:-7px;left:50%;transform:translateX(-50%);
+  width:26px;height:38px;border-radius:8px;
+  background:linear-gradient(170deg,#3A3D44,#1E2025);
+  box-shadow:0 4px 10px -3px rgba(0,0,0,.4);
+}
+.badge-punch i{
+  position:absolute;left:50%;top:9px;transform:translateX(-50%);
+  width:9px;height:9px;border-radius:50%;
+  background:#E9E9E7;box-shadow:inset 0 1px 2px rgba(0,0,0,.5);
+}
+.badge-inner{
+  background:#FCFCFA;border-radius:10px;overflow:hidden;
+  box-shadow:0 2px 10px -6px rgba(20,24,32,.25);
+}
+.badge-photo{position:relative;height:clamp(170px,17vw,230px);overflow:hidden}
+.badge-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 18%;
+  display:block;transform:scale(1.04);
+}
+.badge-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 62%,rgba(252,252,250,.55) 100%);
+}
+.badge-cn{
+  padding:clamp(14px,1.6vw,22px) clamp(16px,1.8vw,24px) 0;
+  font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.08;
+  letter-spacing:.01em;color:#151619;
+}
+.badge-cn em{font-style:normal;color:#455CE9}
+.badge-en{
+  padding:6px clamp(16px,1.8vw,24px) 0;
+  font-family:"Times New Roman",Times,Georgia,serif;font-style:italic;
+  font-size:clamp(10.5px,1vw,13px);letter-spacing:.18em;
+  color:rgba(21,22,25,.52);
+}
+.badge-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+  padding:clamp(10px,1.2vw,16px) clamp(16px,1.8vw,24px) 0;
+  font-size:clamp(11px,1.05vw,13px);color:rgba(21,22,25,.6);font-weight:600;
+}
+.badge-row span:first-child{color:#151619;font-weight:700}
+.badge-pills{
+  display:flex;gap:6px;padding:clamp(10px,1.2vw,14px) clamp(16px,1.8vw,24px) clamp(16px,1.8vw,22px);
+}
+.badge-pill{
+  font-style:normal;font-size:clamp(9px,.78vw,11px);font-weight:700;letter-spacing:.06em;
+  color:#fff;border-radius:999px;padding:3px 10px;
+}
+.badge-pill--r{background:#E4483C}
+.badge-pill--g{background:#2FA36B}
+.badge-pill--b{background:#455CE9}
+
+/* 工牌入场：幕帘揭开后从顶部摆入 */
+html.ds-ready.badge-enter .badge-swing{animation:badge-drop 1.35s cubic-bezier(.22,1.24,.42,1) both}
+@keyframes badge-drop{
+  0%{transform:translateY(-104vh) rotate(-9deg)}
+  62%{transform:translateY(0) rotate(4.5deg)}
+  82%{transform:translateY(0) rotate(-2.6deg)}
+  100%{transform:translateY(0) rotate(0)}
+}
+html.ds-ready .badge-rig,html.ds-ready .hero__note,html.ds-ready .hero__star{opacity:1;transition:opacity .8s var(--ds-ease) .45s}
+html.ds-loading .badge-rig,html.ds-loading .hero__note,html.ds-loading .hero__star{opacity:0}
+
+@media (max-width:820px){
+  .hero__big{font-size:10.5vw;bottom:15vh}
+  .badge-card{width:min(58vw,300px)}
+  .badge-strap{width:min(54vw,270px)}
+  .badge-photo{height:min(44vw,215px)}
+  .badge-cn{font-size:clamp(19px,5.6vw,26px)}
+  .hero__star{display:none}
+  .hero__note--tl{top:clamp(88px,12vh,120px)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero__star{animation:none}
+  html.ds-ready.badge-enter .badge-swing{animation:none;transform:none}
+}
